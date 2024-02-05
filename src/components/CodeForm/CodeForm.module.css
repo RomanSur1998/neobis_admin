@@ -1,0 +1,44 @@
+.CodeFormContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.CodeFormContainer h2 {
+  width: 550px;
+  color: rgb(42, 52, 64);
+  font-size: 56px;
+  font-weight: 600;
+  line-height: 72px;
+  letter-spacing: 0%;
+  text-align: center;
+}
+.otpContainer {
+  display: flex;
+  gap: 24px;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+}
+.text {
+  color: #5f6366;
+  font-size: 16px;
+  font-weight: 400;
+  text-decoration-line: underline;
+  cursor: pointer;
+}
+.errorMessageContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+.errorMessage {
+  width: 100%;
+  color: #f45656;
+  text-align: center;
+}

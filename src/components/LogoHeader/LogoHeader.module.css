@@ -1,0 +1,12 @@
+.headerLogo {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.headerLogoMono {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
