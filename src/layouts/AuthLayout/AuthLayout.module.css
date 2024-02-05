@@ -1,0 +1,40 @@
+.center {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 90vh;
+  width: 90%;
+  margin-inline: auto;
+  position: relative;
+}
+.leftContainer {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.rightContainer {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+.rightContainer img {
+  width: 80%;
+}
+.headerLogo {
+  display: flex;
+  justify-content: left;
+  position: absolute;
+  top: 10%;
+  left: 5%;
+}
