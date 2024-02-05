@@ -44,7 +44,9 @@ const SignInForm = (error = false) => {
             error={error}
           />
 
-          <Button type="submit">Вход</Button>
+          <Button type="submit" isdisabled>
+            Вход
+          </Button>
         </form>
       </AuthLayout>
     </>
