@@ -43,8 +43,7 @@ const SignInForm = (error = false) => {
             onBlur={formik.handleBlur}
             error={error}
           />
-
-          <Button type="submit" isdisabled>
+          <Button type="submit" isdisabled={true}>
             Вход
           </Button>
         </form>

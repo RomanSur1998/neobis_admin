@@ -1,0 +1,30 @@
+.sideBar {
+  background-color: #35536b;
+  display: flex;
+  flex-direction: column;
+  width: 220px;
+  height: 100vh;
+  justify-content: space-between;
+}
+
+.navContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+.logoContainer {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 56px;
+}
+.logo {
+  width: 100px;
+  justify-self: start;
+}
+.outButton {
+  margin-bottom: 56px;
+  margin-inline: auto;
+}

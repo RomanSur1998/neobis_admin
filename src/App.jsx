@@ -6,8 +6,8 @@ import MainLayout from "./layouts/MainLayout/MainLayout";
 const App = () => {
   return (
     <div>
-      <MainRoutes />
-      {/* <MainLayout /> */}
+      {/* <MainRoutes /> */}
+      <MainLayout />
     </div>
   );
 };
