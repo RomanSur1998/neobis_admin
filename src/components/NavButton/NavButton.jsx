@@ -5,7 +5,10 @@ import { icons } from "../../assets";
 const NavButton = ({ text, imagePath, isActive }) => {
   return (
     <>
-      <button className={isActive ? styles.buttonActive : styles.button}>
+      <button
+        className={styles.button}
+        style={isActive ? { backgroundColor: "#F47356" } : null}
+      >
         <img src={imagePath} alt="" />
         {text}
       </button>

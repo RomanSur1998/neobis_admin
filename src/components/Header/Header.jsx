@@ -4,7 +4,7 @@ import { icons } from "../../assets";
 
 const Header = () => {
   return (
-    <header className={styles.headerConyainer}>
+    <header className={styles.headerContainer}>
       <span className={styles.title}>Заказы</span>
       <div className={styles.containerRight}>
         <label htmlFor="" className={styles.input}>

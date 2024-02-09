@@ -9,6 +9,8 @@ import plus_icon from "./icons/plus_icon.svg";
 import stock_icon from "./icons/stock_icon.svg";
 import employer_icon from "./icons/employer_icon.svg";
 import menu_icon from "./icons/menu_icon.svg";
+import dots_icon from "./icons/dots_icon.svg";
+import arrow_dowm from "./icons/arrow_dowm.svg";
 
 export const images = {
   login_image: login_image,
@@ -25,4 +27,6 @@ export const icons = {
   stock_icon: stock_icon,
   employer_icon: employer_icon,
   menu_icon: menu_icon,
+  dots_icon: dots_icon,
+  arrow_dowm: arrow_dowm,
 };

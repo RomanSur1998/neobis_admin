@@ -1,6 +1,9 @@
 .imageButton {
   background-color: transparent;
   border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 .title {
   color: rgb(42, 52, 64);
@@ -9,12 +12,13 @@
   line-height: 120%;
   text-align: left;
 }
-.headerConyainer {
+.headerContainer {
   height: 100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-inline: 24px;
+  background-color: #fff;
 }
 .input {
   border-radius: 14px;
