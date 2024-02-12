@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./SideBar.module.css";
 import { icons } from "../../assets";
 import NavButton from "../NavButton/NavButton";
+import { navigateName } from "../../helpers/routes/routesHelpers";
 
 const SideBar = () => {
   return (
@@ -10,10 +11,15 @@ const SideBar = () => {
         <div className={styles.logoContainer}>
           <img className={styles.logo} src={icons.logo_color} alt="" />
         </div>
-        <NavButton text="Меню" imagePath={icons.menu_icon} isActive={true} />
-        <NavButton text="Склад" imagePath={icons.branches_icon} />
-        <NavButton text="Филиалы" imagePath={icons.stock_icon} />
-        <NavButton text="Сотрудники" imagePath={icons.employer_icon} />
+        {navigateName.map((elem) => {
+          return (
+            <NavButton
+              text={elem.name}
+              imagePath={elem.image}
+              path={elem.route}
+            />
+          );
+        })}
       </div>
       <div className={styles.outButton}>
         <NavButton text="Выйти" imagePath={icons.out_icon} />
