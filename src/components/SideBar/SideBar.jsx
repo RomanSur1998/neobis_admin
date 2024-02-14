@@ -17,6 +17,7 @@ const SideBar = () => {
               text={elem.name}
               imagePath={elem.image}
               path={elem.route}
+              key={elem.name}
             />
           );
         })}

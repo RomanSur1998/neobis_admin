@@ -1,6 +1,10 @@
 import CodeForm from "../../components/CodeForm/CodeForm";
 import SignInForm from "../../components/SignInForm/SignInForm";
 import Table from "../../components/Table/Table";
+import BranchPage from "../../pages/BranchPage.jsx/BranchPage";
+import EmployerPage from "../../pages/EmployerPage.jsx/EmployerPage";
+import MenuPage from "../../pages/MenuPage.jsx/MenuPage";
+import StokePage from "../../pages/StokePage/StokePage";
 
 export const BASE_ROUT_COLLECTION = [
   {
@@ -15,22 +19,22 @@ export const BASE_ROUT_COLLECTION = [
   },
   {
     link: "/menu",
-    element: <Table />,
+    element: <MenuPage />,
     id: 3,
   },
   {
     link: "/stock",
-    element: <Table />,
+    element: <StokePage />,
     id: 4,
   },
   {
     link: "/branches",
-    element: <Table />,
+    element: <BranchPage />,
     id: 5,
   },
   {
     link: "/employers",
-    element: <Table />,
+    element: <EmployerPage />,
     id: 6,
   },
 ];

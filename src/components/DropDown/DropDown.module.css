@@ -1,0 +1,40 @@
+.drop_container {
+  width: 177px;
+  min-height: 334px;
+  background-color: #ebeff2;
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  z-index: 10;
+  padding: 20px;
+  gap: 26px;
+  border-radius: 10px;
+}
+
+.flex {
+  display: flex;
+}
+.column {
+  flex-direction: column;
+}
+.drop_content {
+  gap: 22px;
+}
+.drop_button {
+  align-items: center;
+  border: none;
+  background-color: transparent;
+  color: #2a3440;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.add {
+  color: #5b7e9a;
+}
+
+.active {
+  color: #f45656;
+}

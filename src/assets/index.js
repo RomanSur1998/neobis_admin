@@ -12,6 +12,8 @@ import menu_icon from "./icons/menu_icon.svg";
 import dots_icon from "./icons/dots_icon.svg";
 import arrow_dowm from "./icons/arrow_dowm.svg";
 import close_icon from "./icons/close_icon.svg";
+import card_icon from "./icons/card_icon.svg";
+import plus_color from "./icons/plus_color.svg";
 
 export const images = {
   login_image: login_image,
@@ -31,4 +33,6 @@ export const icons = {
   dots_icon,
   arrow_dowm,
   close_icon,
+  card_icon,
+  plus_color,
 };

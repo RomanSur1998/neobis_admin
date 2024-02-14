@@ -15,7 +15,7 @@ const StyledPagination = styled(Pagination)({
   },
 
   "& .MuiPaginationItem-outlined.Mui-selected": {
-    color: "#515151",
+    color: "#35536B",
     backgroundColor: "#EBEFF2",
     width: "40px",
     height: "40px",
