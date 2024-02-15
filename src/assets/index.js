@@ -14,6 +14,7 @@ import arrow_dowm from "./icons/arrow_dowm.svg";
 import close_icon from "./icons/close_icon.svg";
 import card_icon from "./icons/card_icon.svg";
 import plus_color from "./icons/plus_color.svg";
+import download_icon from "./icons/download_icon.svg";
 
 export const images = {
   login_image: login_image,
@@ -35,4 +36,5 @@ export const icons = {
   close_icon,
   card_icon,
   plus_color,
+  download_icon,
 };

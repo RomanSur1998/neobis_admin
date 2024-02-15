@@ -21,6 +21,14 @@ export const userSlice = createSlice({
       state.statusbar = false;
     });
   },
+  extraReducers: (builder) => {
+    builder.addCase(authUser.pending, (state, action) => {
+      state.statusbar = true;
+    });
+    builder.addCase(authUser.fulfilled, (state, action) => {
+      state.statusbar = false;
+    });
+  },
 });
 export const { setEmail } = userSlice.actions;
 export default userSlice.reducer;

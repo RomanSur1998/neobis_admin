@@ -32,6 +32,7 @@ td:first-child {
   align-items: center;
   gap: 8px;
   height: inherit;
+  position: relative;
 }
 
 .block img {
@@ -41,4 +42,10 @@ td:first-child {
   background-color: transparent;
   border: none;
   cursor: pointer;
+}
+.button {
+  background-color: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
 }

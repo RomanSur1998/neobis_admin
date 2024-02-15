@@ -1,1 +1,1 @@
-export const API = "";
+export const API = "https://neo-cafe.up.railway.app";

@@ -1,12 +1,14 @@
 import { useSelector } from "react-redux";
+import NewCategoryModal from "./NewCategoryModal/NewCategoryModal";
+import NewPositionModal from "./NewPositionModal/NewPositionModal";
 
 const Modals = () => {
-  const { currentModal, props } = useSelector();
+  const { currentModal } = useSelector((state) => state.data);
   const ModalsMap = {
-    // attention: Attention,
-    // phoneNumber: PhoneNumber,
+    newCategory: NewCategoryModal,
+    newPosition: NewPositionModal,
   };
-  return ModalsMap[currentModal](props);
+  return ModalsMap[currentModal]();
 };
 
 export default Modals;

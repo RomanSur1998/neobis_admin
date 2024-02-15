@@ -1,12 +1,14 @@
-import React, { useEffect } from "react";
-import AuthLayout from "./layouts/AuthLayout/AuthLayout";
+import React from "react";
 import MainRoutes from "./routes/MainRoutes";
-import MainLayout from "./layouts/MainLayout/MainLayout";
+import Modals from "./components/Modal";
+import { useSelector } from "react-redux";
 
 const App = () => {
+  const { currentModal } = useSelector((state) => state.data);
   return (
     <div>
       <MainRoutes />
+      {currentModal ? <Modals /> : null}
       {/* <MainLayout /> */}
     </div>
   );
