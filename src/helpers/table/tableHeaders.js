@@ -1,4 +1,5 @@
 import { icons } from "../../assets";
+import { setIsShowPopUp } from "../../redux/slices/DataSlice";
 
 export const menuHeader = [
   {
@@ -8,12 +9,14 @@ export const menuHeader = [
   {
     header: "Наименование",
     id: 2,
-    onClick: () => {},
   },
   {
     header: "Категория",
     id: 3,
     image: icons.arrow_dowm,
+    onClick: (dispatch) => {
+      dispatch(setIsShowPopUp(true));
+    },
   },
   {
     header: "Состав блюда и граммовка",
@@ -223,7 +226,6 @@ export const employerHeader = [
   {
     header: "График работы",
     id: 6,
-    image: icons.arrow_dowm,
   },
 ];
 

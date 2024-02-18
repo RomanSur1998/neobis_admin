@@ -9,7 +9,6 @@ const App = () => {
     <div>
       <MainRoutes />
       {currentModal ? <Modals /> : null}
-      {/* <MainLayout /> */}
     </div>
   );
 };

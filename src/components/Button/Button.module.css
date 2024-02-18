@@ -2,10 +2,13 @@
   width: 534px;
   height: 70px;
   border-radius: 20px;
-  background: #35536b;
+  background: #35536bbf;
   border: none;
   color: rgb(254, 254, 254);
   font-size: 18px;
   font-weight: 600;
   cursor: pointer;
+}
+.active {
+  background-color: #35536b;
 }

@@ -12,17 +12,17 @@
 }
 .modal {
   width: 600px;
-  height: 335px;
+  height: 258pxpx;
   border-radius: 20px;
   background-color: #fff;
   padding: 32px;
 }
-.form {
-  flex-direction: column;
-  gap: 28px;
-}
 .title {
-  justify-content: space-between;
+  font-size: 20px;
+  font-weight: 400;
+  color: #2a3440;
+  text-align: center;
+  margin-top: 24px;
 }
 
 .button {
@@ -34,6 +34,7 @@
   cursor: pointer;
 }
 .button_block {
+  margin-top: 48px;
   justify-content: space-between;
 }
 .border {
@@ -45,4 +46,9 @@
   background-color: #35536b;
   border: none;
   color: #fff;
+}
+.cancel {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
 }

@@ -23,14 +23,14 @@
 import React from "react";
 import styles from "./Button.module.css";
 import { colors } from "../../helpers/colors";
-const Button = ({ children, type, isDisabled }) => {
+import classnames from "classnames";
+const Button = ({ children, type, isDisabled, ...props }) => {
   return (
     <button
-      className={styles.button}
+      className={classnames(styles.button, {
+        [styles.active]: isDisabled,
+      })}
       type={type ?? null}
-      style={{
-        backgroundColor: !isDisabled ? `${colors.noValidButtonColor}` : null,
-      }}
     >
       {children}
     </button>

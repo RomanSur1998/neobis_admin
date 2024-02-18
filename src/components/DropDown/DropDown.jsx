@@ -1,14 +1,23 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import styles from "./DropDown.module.css";
 import { icons } from "../../assets";
 import classnames from "classnames";
+import { useDispatch, useSelector } from "react-redux";
+import { setCurrentModal, setIsShowPopUp } from "../../redux/slices/DataSlice";
 
 const DropDown = ({ list }) => {
+  const { isShowPopUp } = useSelector((state) => state.data);
+  console.log(isShowPopUp);
+  const dispatch = useDispatch();
+
   return (
     <div
       className={classnames(styles.drop_container, styles.flex, styles.column)}
     >
-      <button className={classnames(styles.drop_button, styles.flex)}>
+      <button
+        className={classnames(styles.drop_button, styles.flex)}
+        onClick={() => dispatch(setIsShowPopUp(false))}
+      >
         Категория <img src={icons.arrow_dowm} alt="" />
       </button>
       <div
@@ -40,6 +49,7 @@ const DropDown = ({ list }) => {
         </button>
       </div>
       <button
+        onClick={() => dispatch(setCurrentModal("deleteCategory"))}
         className={classnames(styles.drop_button, styles.flex, styles.add)}
       >
         Добавить

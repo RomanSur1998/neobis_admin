@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   route: "/menu",
   currentModal: null,
+  isShowPopUp: false,
 };
 
 export const dataSlice = createSlice({
@@ -15,8 +16,12 @@ export const dataSlice = createSlice({
     setCurrentModal(state, action) {
       state.currentModal = action.payload;
     },
+    setIsShowPopUp(state, action) {
+      // state.isShowPopUp = !state.isShowPopUp;
+      state.isShowPopUp = action.payload;
+    },
   },
 });
 
-export const { setRoute, setCurrentModal } = dataSlice.actions;
+export const { setRoute, setCurrentModal, setIsShowPopUp } = dataSlice.actions;
 export default dataSlice.reducer;

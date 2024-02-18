@@ -13,9 +13,7 @@ const MenuPage = () => {
   }
   return (
     <>
-      {/* <DropDown /> */}
       <MainLayout>
-        {/* <button onClick={openModal}>modal</button> */}
         <Table headerList={menuHeader} bodyList={menuBody} />
       </MainLayout>
     </>

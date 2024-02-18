@@ -52,7 +52,7 @@ const CodeForm = ({ error }) => {
             <input {...register(defaultOptions)} />
             <input {...register(defaultOptions)} />
           </div>
-          <Button type="submit" isdisabled={formik.isValid || null}>
+          <Button type="submit" isDisabled={formik.isValid}>
             Войти
           </Button>
         </form>

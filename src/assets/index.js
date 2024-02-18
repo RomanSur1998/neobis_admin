@@ -15,6 +15,8 @@ import close_icon from "./icons/close_icon.svg";
 import card_icon from "./icons/card_icon.svg";
 import plus_color from "./icons/plus_color.svg";
 import download_icon from "./icons/download_icon.svg";
+import delete_mono from "./icons/delete_mono.svg";
+import pencil_icon from "./icons/pencil_icon.svg";
 
 export const images = {
   login_image: login_image,
@@ -37,4 +39,6 @@ export const icons = {
   card_icon,
   plus_color,
   download_icon,
+  pencil_icon,
+  delete_mono,
 };

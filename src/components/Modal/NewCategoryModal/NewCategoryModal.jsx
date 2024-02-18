@@ -8,9 +8,9 @@ import TextField from "../../../ui/TextField/TextField";
 const NewCategoryModal = () => {
   return (
     <div className={classnames(styles.modal_container, styles.flex)}>
-      <div>
-        <form action="" className={classnames(styles.modal, styles.flex)}>
-          <HeaderModals name={"Новая категория"} />
+      <div className={classnames(styles.modal)}>
+        <HeaderModals name={"Новая категория"} />
+        <form action="" className={classnames(styles.form, styles.flex)}>
           <TextField
             labelName={"Наименование"}
             name={"add_category"}
