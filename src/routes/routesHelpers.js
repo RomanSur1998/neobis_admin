@@ -1,4 +1,4 @@
-import { icons } from "../../assets";
+import { icons } from "../assets";
 
 export const navigateName = [
   { id: 1, name: "Меню", route: "/menu", image: icons.menu_icon },

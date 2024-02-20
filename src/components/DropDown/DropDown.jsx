@@ -1,13 +1,13 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./DropDown.module.css";
 import { icons } from "../../assets";
 import classnames from "classnames";
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrentModal, setIsShowPopUp } from "../../redux/slices/DataSlice";
+import DropDownButton from "../../ui/BodyRow/DropDownButton/DropDownButton";
 
-const DropDown = ({ list }) => {
-  const { isShowPopUp } = useSelector((state) => state.data);
-  console.log(isShowPopUp);
+const DropDown = () => {
+  const { isShowPopUp, category } = useSelector((state) => state.data);
   const dispatch = useDispatch();
 
   return (
@@ -23,33 +23,12 @@ const DropDown = ({ list }) => {
       <div
         className={classnames(styles.flex, styles.drop_content, styles.column)}
       >
-        {/* {list.map((item) => {
-          <button className={classnames(styles.drop_button, styles.flex)}>
-            Кофе
-            <img src={icons.card_icon} alt="" />
-          </button>;
-        })} */}
-        <button className={classnames(styles.drop_button, styles.flex)}>
-          Кофе
-        </button>
-        <button className={classnames(styles.drop_button, styles.flex)}>
-          Десерты
-        </button>
-        <button className={classnames(styles.drop_button, styles.flex)}>
-          Коктели
-        </button>
-        <button className={classnames(styles.drop_button, styles.flex)}>
-          Выпечка
-        </button>
-        <button
-          className={classnames(styles.drop_button, styles.flex, styles.active)}
-        >
-          Чай
-          <img src={icons.card_icon} alt="" />
-        </button>
+        {category.map((item, index) => {
+          return <DropDownButton name={item.categoryName} key={index} />;
+        })}
       </div>
       <button
-        onClick={() => dispatch(setCurrentModal("deleteCategory"))}
+        onClick={() => dispatch(setCurrentModal("newCategory"))}
         className={classnames(styles.drop_button, styles.flex, styles.add)}
       >
         Добавить

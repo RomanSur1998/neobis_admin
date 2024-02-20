@@ -1,19 +1,18 @@
 import React from "react";
-import styles from "./NewPositionModal.module.css";
+import styles from "./EditPositionModal.module.css";
 import classnames from "classnames";
 import HeaderModals from "../../../ui/HeaderModals/HeaderModals";
 import { icons } from "../../../assets";
 import TextField from "../../../ui/TextField/TextField";
 import SelectDropDown from "../../SelectDropDown/SelectDropDown";
-import Button from "../../Button/Button";
 import ModalButton from "../../../ui/ModalButton/ModalButton";
 import BackgroundModal from "../BackgroundModal/BackgroundModal";
 
-const NewPositionModal = () => {
+const EditPositionModal = () => {
   return (
     <BackgroundModal>
       <div className={classnames(styles.modal)}>
-        <HeaderModals name={"Новая позиция"} />
+        <HeaderModals name={"Редактирование "} />
         <form action="" className={classnames(styles.form)}>
           <label htmlFor="download" className={classnames(styles.label_bold)}>
             Добавьте фото к позиции
@@ -36,7 +35,7 @@ const NewPositionModal = () => {
             Наименования , категория и стоимость{" "}
           </h3>
           <div>
-            <TextField labelName={"Наименование"} name={"add_name"} />
+            <TextField labelName={"Наименование"} name={"edit_name"} />
           </div>
           <label htmlFor="" className={classnames(styles.label)}>
             Описание
@@ -138,4 +137,4 @@ const NewPositionModal = () => {
   );
 };
 
-export default NewPositionModal;
+export default EditPositionModal;

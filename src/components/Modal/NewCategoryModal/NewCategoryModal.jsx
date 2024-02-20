@@ -1,13 +1,19 @@
 import classnames from "classnames";
 import React from "react";
 import styles from "./NewCategoryModal.module.css";
-import { icons } from "../../../assets";
 import HeaderModals from "../../../ui/HeaderModals/HeaderModals";
 import TextField from "../../../ui/TextField/TextField";
+import BackgroundModal from "../BackgroundModal/BackgroundModal";
+import { useDispatch } from "react-redux";
+import { useFormik } from "formik";
+import ModalButton from "../../../ui/ModalButton/ModalButton";
 
 const NewCategoryModal = () => {
+  // const dispatch = useDispatch();
+  // function handleSetCategory() {}
+  // const formik = useFormik();
   return (
-    <div className={classnames(styles.modal_container, styles.flex)}>
+    <BackgroundModal>
       <div className={classnames(styles.modal)}>
         <HeaderModals name={"Новая категория"} />
         <form action="" className={classnames(styles.form, styles.flex)}>
@@ -18,16 +24,12 @@ const NewCategoryModal = () => {
           />
 
           <div className={classnames(styles.button_block, styles.flex)}>
-            <button className={classnames(styles.button, styles.border)}>
-              Отмена
-            </button>
-            <button className={classnames(styles.button, styles.fill)}>
-              Добавить
-            </button>
+            <ModalButton buttonType={"outlined"}>Отменa</ModalButton>
+            <ModalButton buttonType={"filled"}> Удалить</ModalButton>
           </div>
         </form>
       </div>
-    </div>
+    </BackgroundModal>
   );
 };
 

@@ -1,13 +1,15 @@
 import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
-import { BASE_ROUT_COLLECTION } from "../helpers/routes/routes";
 import Cookies from "js-cookie";
 import axios from "axios";
+import { BASE_ROUT_COLLECTION } from "./routes";
 
 const MainRoutes = () => {
-  //   useEffect(() => {
-  //     Cookies.set("tokens", "");
-  //   }, []);
+  useEffect(() => {
+    const tokens = Cookies.get("tokens");
+    const paar = JSON.parse(tokens);
+    console.log(paar.accessToken);
+  }, []);
 
   return (
     <Routes>

@@ -2,6 +2,9 @@ import { useSelector } from "react-redux";
 import NewCategoryModal from "./NewCategoryModal/NewCategoryModal";
 import NewPositionModal from "./NewPositionModal/NewPositionModal";
 import DeleteModal from "./DeleteModal/DeleteModal";
+import EditPositionModal from "./EditPositionModal/EditPositionModal";
+import NewProductStockModal from "./NewProductStockModal/NewProductStockModal";
+import EditNewProductModal from "./EditNewProductModal/EditNewProductModal";
 
 const Modals = () => {
   const { currentModal } = useSelector((state) => state.data);
@@ -9,8 +12,11 @@ const Modals = () => {
     newCategory: NewCategoryModal,
     deleteCategory: DeleteModal,
     newPosition: NewPositionModal,
+    editPosition: EditPositionModal,
+    newProduct: NewProductStockModal,
+    editProduct: EditNewProductModal,
   };
-  return ModalsMap[currentModal]();
+  return currentModal ? ModalsMap[currentModal]() : null;
 };
 
 export default Modals;

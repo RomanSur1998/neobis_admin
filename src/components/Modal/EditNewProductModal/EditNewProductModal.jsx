@@ -1,13 +1,13 @@
 import React from "react";
-import styles from "./NewProductStockModal.module.css";
 import BackgroundModal from "../BackgroundModal/BackgroundModal";
-import HeaderModals from "../../../ui/HeaderModals/HeaderModals";
 import classnames from "classnames";
+import styles from "./EditNewProductModal.module.css";
 import ModalButton from "../../../ui/ModalButton/ModalButton";
 import TextField from "../../../ui/TextField/TextField";
+import HeaderModals from "../../../ui/HeaderModals/HeaderModals";
 import SelectDropDown from "../../SelectDropDown/SelectDropDown";
 
-const NewProductStockModal = () => {
+const EditNewProductModal = () => {
   return (
     <BackgroundModal>
       <div className={classnames(styles.modal)}>
@@ -117,4 +117,4 @@ const NewProductStockModal = () => {
   );
 };
 
-export default NewProductStockModal;
+export default EditNewProductModal;

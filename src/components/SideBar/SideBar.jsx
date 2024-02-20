@@ -1,10 +1,13 @@
 import React from "react";
 import styles from "./SideBar.module.css";
 import { icons } from "../../assets";
-import NavButton from "../NavButton/NavButton";
-import { navigateName } from "../../helpers/routes/routesHelpers";
+import { navigateName } from "../../routes/routesHelpers";
+import { NavLink, useLocation } from "react-router-dom";
+import classnames from "classnames";
 
 const SideBar = () => {
+  const { pathname } = useLocation();
+
   return (
     <nav className={styles.sideBar}>
       <div className={styles.navContainer}>
@@ -13,17 +16,24 @@ const SideBar = () => {
         </div>
         {navigateName.map((elem) => {
           return (
-            <NavButton
-              text={elem.name}
-              imagePath={elem.image}
-              path={elem.route}
+            <NavLink
+              to={elem.route}
               key={elem.name}
-            />
+              className={
+                pathname == elem.route ? styles.buttonActive : styles.button
+              }
+            >
+              <img src={elem.image} alt="icon" />
+              {elem.name}
+            </NavLink>
           );
         })}
       </div>
       <div className={styles.outButton}>
-        <NavButton text="Выйти" imagePath={icons.out_icon} />
+        <NavLink to={""} className={styles.button}>
+          <img src={icons.out_icon} alt="" />
+          Выход
+        </NavLink>{" "}
       </div>
     </nav>
   );

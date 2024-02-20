@@ -11,7 +11,6 @@ const BodyRow = ({ row }) => {
     function hadleOenSelecrtAction(event) {
       const { target } = event;
       if (target instanceof Node && !rootRef.current?.contains(target)) {
-        console.log(event);
         setIsShowSelectAction((prev) => !prev);
       }
     }

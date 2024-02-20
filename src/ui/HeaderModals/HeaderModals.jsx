@@ -10,7 +10,6 @@ const HeaderModals = ({ name, center }) => {
 
   function handleClose() {
     dispatch(setCurrentModal(null));
-    // dispatch(setIsShowPopUp(false));
   }
 
   return (

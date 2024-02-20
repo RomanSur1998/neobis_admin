@@ -4,6 +4,9 @@ import { API } from "../helpers/url";
 
 export const configAxios = axios.create({
   baseURL: API,
+  headers: {
+    "Content-Type": "application/json",
+  },
 });
 
 // configAxios.interceptors.response.use(

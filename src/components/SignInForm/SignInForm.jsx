@@ -33,7 +33,7 @@ const SignInForm = (error = false) => {
           <h2 className={styles.title}>Вход</h2>
           <InputField
             placeholder={"Электронная почта"}
-            type="email"
+            type="text"
             name="identifier"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}

@@ -28,3 +28,36 @@
   margin-bottom: 56px;
   margin-inline: auto;
 }
+
+.buttonActive {
+  border-radius: 12px;
+  background: rgb(244, 115, 86);
+  width: 157px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  color: rgb(255, 255, 255);
+  font-size: 18px;
+  font-weight: 500;
+  padding: 10px 12px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.button {
+  border-radius: 12px;
+  background: transparent;
+  width: 157px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  color: rgb(255, 255, 255);
+  font-size: 18px;
+  font-weight: 500;
+  padding: 10px 12px;
+  cursor: pointer;
+  text-decoration: none;
+}

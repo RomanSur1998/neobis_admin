@@ -1,10 +1,9 @@
-import CodeForm from "../../components/CodeForm/CodeForm";
-import SignInForm from "../../components/SignInForm/SignInForm";
-import Table from "../../components/Table/Table";
-import BranchPage from "../../pages/BranchPage.jsx/BranchPage";
-import EmployerPage from "../../pages/EmployerPage.jsx/EmployerPage";
-import MenuPage from "../../pages/MenuPage.jsx/MenuPage";
-import StokePage from "../../pages/StokePage/StokePage";
+import CodeForm from "../components/CodeForm/CodeForm";
+import SignInForm from "../components/SignInForm/SignInForm";
+import BranchPage from "../pages/BranchPage.jsx/BranchPage";
+import EmployerPage from "../pages/EmployerPage.jsx/EmployerPage";
+import MenuPage from "../pages/MenuPage.jsx/MenuPage";
+import StokePage from "../pages/StokePage/StokePage";
 
 export const BASE_ROUT_COLLECTION = [
   {

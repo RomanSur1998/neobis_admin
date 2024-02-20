@@ -4,6 +4,14 @@ const initialState = {
   route: "/menu",
   currentModal: null,
   isShowPopUp: false,
+  category: [
+    { categoryName: "Кофе" },
+    { categoryName: "Кофе" },
+    { categoryName: "Кофе" },
+    { categoryName: "Кофе" },
+    { categoryName: "Кофе" },
+    { categoryName: "Кофе" },
+  ],
 };
 
 export const dataSlice = createSlice({
@@ -20,8 +28,12 @@ export const dataSlice = createSlice({
       // state.isShowPopUp = !state.isShowPopUp;
       state.isShowPopUp = action.payload;
     },
+    setCategory(state, action) {
+      state.category = action.payload;
+    },
   },
 });
 
-export const { setRoute, setCurrentModal, setIsShowPopUp } = dataSlice.actions;
+export const { setRoute, setCurrentModal, setIsShowPopUp, setCategory } =
+  dataSlice.actions;
 export default dataSlice.reducer;
