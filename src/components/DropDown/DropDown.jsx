@@ -4,11 +4,16 @@ import { icons } from "../../assets";
 import classnames from "classnames";
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrentModal, setIsShowPopUp } from "../../redux/slices/DataSlice";
-import DropDownButton from "../../ui/BodyRow/DropDownButton/DropDownButton";
+import DropDownButton from "../../ui/DropDownButton/DropDownButton";
+import { getCategoryList } from "../../redux/actions/DataActions";
 
 const DropDown = () => {
   const { isShowPopUp, category } = useSelector((state) => state.data);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCategoryList());
+  }, []);
 
   return (
     <div
@@ -23,8 +28,8 @@ const DropDown = () => {
       <div
         className={classnames(styles.flex, styles.drop_content, styles.column)}
       >
-        {category.map((item, index) => {
-          return <DropDownButton name={item.categoryName} key={index} />;
+        {category?.map((item, index) => {
+          return <DropDownButton name={item} key={index} />;
         })}
       </div>
       <button

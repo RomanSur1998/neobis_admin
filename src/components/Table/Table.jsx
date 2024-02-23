@@ -6,6 +6,7 @@ import DropDown from "../DropDown/DropDown";
 import { useDispatch, useSelector } from "react-redux";
 import { setIsShowPopUp } from "../../redux/slices/DataSlice";
 import BodyRow from "../../ui/BodyRow/BodyRow";
+import MyPagination from "../Pagination/MyPagination";
 
 const Table = ({ headerList, bodyList }) => {
   const { isShowPopUp } = useSelector((state) => state.data);
@@ -56,11 +57,14 @@ const Table = ({ headerList, bodyList }) => {
           </tr>
         </thead>
         <tbody>
-          {bodyList.map((row, index) => {
+          {bodyList?.map((row, index) => {
             return <BodyRow row={row} key={index} />;
           })}
         </tbody>
       </table>
+      <div className={classnames(styles.pagination_block)}>
+        <MyPagination />
+      </div>
     </>
   );
 };

@@ -46,3 +46,6 @@ td:first-child {
   display: flex;
   align-items: center;
 }
+.pagination_block {
+  margin-top: 20px;
+}

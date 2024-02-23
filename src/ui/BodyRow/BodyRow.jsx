@@ -28,7 +28,7 @@ const BodyRow = ({ row }) => {
   return (
     <tr>
       {row?.map((cell, i) => {
-        return <td key={i}>{cell.tableCell}</td>;
+        return <td key={i}>{cell}</td>;
       })}
       <td>
         {isShowSelectAction && <SelectAction />}

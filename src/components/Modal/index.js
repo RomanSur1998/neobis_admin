@@ -5,6 +5,8 @@ import DeleteModal from "./DeleteModal/DeleteModal";
 import EditPositionModal from "./EditPositionModal/EditPositionModal";
 import NewProductStockModal from "./NewProductStockModal/NewProductStockModal";
 import EditNewProductModal from "./EditNewProductModal/EditNewProductModal";
+import BranchModal from "./BranchModal/BranchModal";
+import NewEmployer from "./NewEmployer/NewEmployer";
 
 const Modals = () => {
   const { currentModal } = useSelector((state) => state.data);
@@ -15,6 +17,8 @@ const Modals = () => {
     editPosition: EditPositionModal,
     newProduct: NewProductStockModal,
     editProduct: EditNewProductModal,
+    addNewBranch: BranchModal,
+    newEmployer: NewEmployer,
   };
   return currentModal ? ModalsMap[currentModal]() : null;
 };

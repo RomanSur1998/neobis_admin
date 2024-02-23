@@ -2,20 +2,45 @@ import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import Cookies from "js-cookie";
 import axios from "axios";
-import { BASE_ROUT_COLLECTION } from "./routes";
+import { BASE_ROUT_COLLECTION, PRIVATE_ROUT_COLLECTION } from "./routes";
+import { useDispatch, useSelector } from "react-redux";
+import { setAccessToken } from "../redux/slices/UserSlice";
+import { api } from "../api/api";
 
 const MainRoutes = () => {
+  const { accessToken } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  console.log(accessToken, "token");
+
   useEffect(() => {
-    const tokens = Cookies.get("tokens");
-    const paar = JSON.parse(tokens);
-    console.log(paar.accessToken);
+    const accessToken = Cookies.get("accessToken");
+    dispatch(setAccessToken(accessToken));
   }, []);
 
+  async function getREf() {
+    try {
+      const resp = await api.getRefresh();
+      console.log(resp, "resp");
+      return resp;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  useEffect(() => {
+    getREf();
+  }, []);
   return (
     <Routes>
       {BASE_ROUT_COLLECTION.map((elem) => {
         return <Route path={elem.link} element={elem.element} key={elem.id} />;
       })}
+      {accessToken
+        ? PRIVATE_ROUT_COLLECTION.map((elem) => {
+            return (
+              <Route path={elem.link} element={elem.element} key={elem.id} />
+            );
+          })
+        : null}
     </Routes>
   );
 };

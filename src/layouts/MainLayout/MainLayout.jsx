@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./MainLayout.module.css";
 import Header from "../../components/Header/Header";
 import SideBar from "../../components/SideBar/SideBar";
-import MyPagination from "../../components/Pagination/MyPagination";
 
 const MainLayout = ({ children }) => {
   return (
@@ -13,9 +12,7 @@ const MainLayout = ({ children }) => {
         <section className={styles.postionContainer}>
           <section className={styles.tableContainer}>
             {children}
-            <div className={styles.myPagination}>
-              <MyPagination />
-            </div>
+            <div className={styles.myPagination}></div>
           </section>
         </section>
       </main>

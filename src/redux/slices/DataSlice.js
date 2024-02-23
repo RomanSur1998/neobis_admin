@@ -1,17 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { getCategoryList, getMenuList } from "../actions/DataActions";
+import { changeTableData } from "../../helpers/table/changeTableData";
 
 const initialState = {
   route: "/menu",
-  currentModal: null,
+  currentModal: "",
   isShowPopUp: false,
-  category: [
-    { categoryName: "Кофе" },
-    { categoryName: "Кофе" },
-    { categoryName: "Кофе" },
-    { categoryName: "Кофе" },
-    { categoryName: "Кофе" },
-    { categoryName: "Кофе" },
-  ],
+  category: ["Загрузка..."],
+  tableDataList: null,
+  count: null,
 };
 
 export const dataSlice = createSlice({
@@ -25,12 +22,19 @@ export const dataSlice = createSlice({
       state.currentModal = action.payload;
     },
     setIsShowPopUp(state, action) {
-      // state.isShowPopUp = !state.isShowPopUp;
       state.isShowPopUp = action.payload;
     },
     setCategory(state, action) {
       state.category = action.payload;
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(getCategoryList.fulfilled, (state, action) => {
+      state.category = action.payload.data;
+    });
+    builder.addCase(getMenuList.fulfilled, (state, action) => {
+      state.tableDataList = changeTableData(action.payload.data.responses);
+    });
   },
 });
 

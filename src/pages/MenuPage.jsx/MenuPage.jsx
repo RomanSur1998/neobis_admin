@@ -1,20 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Table from "../../components/Table/Table";
 import MainLayout from "../../layouts/MainLayout/MainLayout";
-import { menuBody, menuHeader } from "../../helpers/table/tableHeaders";
-import DropDown from "../../components/DropDown/DropDown";
-import { useDispatch } from "react-redux";
+import { menuHeader } from "../../helpers/table/tableHeaders";
+import { useDispatch, useSelector } from "react-redux";
 import { setCurrentModal } from "../../redux/slices/DataSlice";
+import { getMenuList } from "../../redux/actions/DataActions";
 
 const MenuPage = () => {
+  const { tableDataList } = useSelector((state) => state.data);
+
   const dispatch = useDispatch();
-  function openModal() {
-    dispatch(setCurrentModal("newCategory"));
-  }
+
+  useEffect(() => {
+    dispatch(getMenuList());
+  }, []);
   return (
     <>
       <MainLayout>
-        <Table headerList={menuHeader} bodyList={menuBody} />
+        <Table headerList={menuHeader} bodyList={tableDataList} />
       </MainLayout>
     </>
   );

@@ -4,14 +4,17 @@ import { authUser } from "../actions/UserActions";
 const initialState = {
   email: "",
   password: "",
-  codeOTP: "",
   statusbar: false,
+  accessToken: null,
 };
 export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
     setEmail(actions, payload) {},
+    setAccessToken(state, action) {
+      state.accessToken = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(authUser.pending, (state, actions) => {
@@ -19,16 +22,10 @@ export const userSlice = createSlice({
     });
     builder.addCase(authUser.fulfilled, (state, actions) => {
       state.statusbar = false;
-    });
-  },
-  extraReducers: (builder) => {
-    builder.addCase(authUser.pending, (state, action) => {
-      state.statusbar = true;
-    });
-    builder.addCase(authUser.fulfilled, (state, action) => {
-      state.statusbar = false;
+      console.log(actions.payload, "payload");
+      state.accessToken = actions.payload.data.accessToken;
     });
   },
 });
-export const { setEmail } = userSlice.actions;
+export const { setEmail, setAccessToken } = userSlice.actions;
 export default userSlice.reducer;

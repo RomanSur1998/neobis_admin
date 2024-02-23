@@ -16,6 +16,8 @@ export const BASE_ROUT_COLLECTION = [
     element: <CodeForm />,
     id: 2,
   },
+];
+export const PRIVATE_ROUT_COLLECTION = [
   {
     link: "/menu",
     element: <MenuPage />,
@@ -35,17 +37,5 @@ export const BASE_ROUT_COLLECTION = [
     link: "/employers",
     element: <EmployerPage />,
     id: 6,
-  },
-];
-export const PRIVATE_ROUT_COLLECTION = [
-  {
-    link: "/",
-    element: <SignInForm />,
-    id: 1,
-  },
-  {
-    link: "/code",
-    element: <SignInForm />,
-    id: 2,
   },
 ];

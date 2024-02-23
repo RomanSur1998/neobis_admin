@@ -26,55 +26,6 @@ export const menuHeader = [
     header: "Стоимость",
     id: 5,
   },
-  {
-    header: "Филиал",
-    id: 6,
-  },
-];
-export const menuBody = [
-  [
-    { tableCell: "1" },
-    { tableCell: "Капучино" },
-    { tableCell: "Кофе" },
-    { tableCell: "Молоко (70мл), Кофе (15 зерен)" },
-    { tableCell: "140 сом" },
-    { tableCell: "NeoCafe Ala-Too Square" },
-  ],
-
-  [
-    { tableCell: "1" },
-    { tableCell: "Капучино" },
-    { tableCell: "Кофе" },
-    { tableCell: "Молоко (70мл), Кофе (15 зерен)" },
-    { tableCell: "140 сом" },
-    { tableCell: "NeoCafe Ala-Too Square" },
-  ],
-
-  [
-    { tableCell: "1" },
-    { tableCell: "Капучино" },
-    { tableCell: "Кофе" },
-    { tableCell: "Молоко (70мл), Кофе (15 зерен)" },
-    { tableCell: "140 сом" },
-    { tableCell: "NeoCafe Ala-Too Square" },
-  ],
-
-  [
-    { tableCell: "1" },
-    { tableCell: "Капучино" },
-    { tableCell: "Кофе" },
-    { tableCell: "Молоко (70мл), Кофе (15 зерен)" },
-    { tableCell: "140 сом" },
-    { tableCell: "NeoCafe Ala-Too Square" },
-  ],
-  [
-    { tableCell: "1" },
-    { tableCell: "Капучино" },
-    { tableCell: "Кофе" },
-    { tableCell: "Молоко (70мл), Кофе (15 зерен)" },
-    { tableCell: "140 сом" },
-    { tableCell: "NeoCafe Ala-Too Square" },
-  ],
 ];
 
 export const stockHeader = [

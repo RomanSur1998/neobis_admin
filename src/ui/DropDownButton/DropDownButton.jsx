@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import styles from "./DropDownButton.module.css";
-import { icons } from "../../../assets";
+import { icons } from "../../assets";
 import classnames from "classnames";
 import { useDispatch } from "react-redux";
-import { setCurrentModal } from "../../../redux/slices/DataSlice";
+import { setCurrentModal } from "../../redux/slices/DataSlice";
 
 const DropDownButton = ({ name }) => {
   const [isShow, setIsShow] = useState();
