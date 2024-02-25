@@ -49,7 +49,7 @@ const NewProductStockModal = () => {
                   <TextField />
                   {/* <input type="text" /> */}
                 </div>
-                <SelectDropDown name={"мл"} isSmall={true} />
+                <SelectDropDown name={"мл"} inputType={"small"} />
               </div>
             </label>
             <label

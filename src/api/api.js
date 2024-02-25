@@ -1,6 +1,5 @@
 import Cookies from "js-cookie";
 import { configAxios } from "../config/configAxios";
-import axios from "axios";
 
 export const api = {
   authorization: async (data, navigate) => {
@@ -25,29 +24,35 @@ export const api = {
       return error.response;
     }
   },
-  getMenu: async () => {
+  getMenu: async (pageNumber) => {
     try {
       const response = await configAxios.get(
-        "/api/v1/menu/all?number=1&size=5"
+        `/api/v1/menu/all?number=${pageNumber}&size=5`
       );
       return response;
     } catch (error) {
       return error;
     }
   },
-  // getRefresh: async () => {
-  //   try {
-  //     const response = await axios.post(
-  //       "https://neo-cafe.up.railway.app/api/v1/auth/refresh-token",
-  //       {
-  //         email: "admin@gmail.com",
-  //         token: Cookies.get("refreshToken"),
-  //       }
-  //     );
-  //     console.log(response, "responseRefresh");
-  //     return response;
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // },
+  setNewCategory: async (data) => {
+    try {
+      const response = await configAxios.post("/api/v1/category/add", data);
+      return response;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+  },
+  deleteCategory: async (data) => {
+    try {
+      const response = await configAxios.delete(
+        "/api/v1/category/delete",
+        data
+      );
+      return response;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+  },
 };

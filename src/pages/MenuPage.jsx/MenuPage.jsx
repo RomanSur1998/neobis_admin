@@ -7,13 +7,13 @@ import { setCurrentModal } from "../../redux/slices/DataSlice";
 import { getMenuList } from "../../redux/actions/DataActions";
 
 const MenuPage = () => {
-  const { tableDataList } = useSelector((state) => state.data);
+  const { tableDataList, pageNumber } = useSelector((state) => state.data);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getMenuList());
-  }, []);
+    dispatch(getMenuList(pageNumber));
+  }, [pageNumber]);
   return (
     <>
       <MainLayout>

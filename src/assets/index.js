@@ -17,6 +17,8 @@ import plus_color from "./icons/plus_color.svg";
 import download_icon from "./icons/download_icon.svg";
 import delete_mono from "./icons/delete_mono.svg";
 import pencil_icon from "./icons/pencil_icon.svg";
+import arrow_black from "./icons/arrow_black.svg";
+import arrow_up_black from "./icons/arrow_up_black.svg";
 
 export const images = {
   login_image: login_image,
@@ -41,4 +43,6 @@ export const icons = {
   download_icon,
   pencil_icon,
   delete_mono,
+  arrow_black,
+  arrow_up_black,
 };

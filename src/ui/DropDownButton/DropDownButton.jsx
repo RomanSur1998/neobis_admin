@@ -3,7 +3,7 @@ import styles from "./DropDownButton.module.css";
 import { icons } from "../../assets";
 import classnames from "classnames";
 import { useDispatch } from "react-redux";
-import { setCurrentModal } from "../../redux/slices/DataSlice";
+import { setCurrentModal, setProps } from "../../redux/slices/DataSlice";
 
 const DropDownButton = ({ name }) => {
   const [isShow, setIsShow] = useState();
@@ -15,8 +15,9 @@ const DropDownButton = ({ name }) => {
   const handleMouseOut = () => {
     setIsShow(false);
   };
-  function handleDelete() {
+  function handleDelete(data) {
     dispatch(setCurrentModal("deleteCategory"));
+    dispatch(setProps(data));
   }
 
   return (
@@ -26,7 +27,7 @@ const DropDownButton = ({ name }) => {
       })}
       onMouseOver={handleMouseOver}
       onMouseOut={handleMouseOut}
-      onClick={handleDelete}
+      onClick={() => handleDelete(name)}
     >
       {name}
       {isShow && <img src={icons.card_icon} alt="" />}

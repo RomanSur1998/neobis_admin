@@ -1,87 +1,64 @@
-import React, { useState } from "react";
-import { Pagination, styled } from "@mui/material";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getPage } from "../../helpers/pagination";
 import styles from "./MyPagination.module.css";
-
-const StyledPagination = styled(Pagination)({
-  color: "#515151",
-  gap: "8px",
-
-  "& .MuiPaginationItem-root": {
-    color: "#515151",
-    backgroundColor: "#fff",
-    border: "none",
-    width: "40px",
-    height: "40px",
-  },
-
-  "& .MuiPaginationItem-outlined.Mui-selected": {
-    color: "#35536B",
-    backgroundColor: "#EBEFF2",
-    width: "40px",
-    height: "40px",
-  },
-});
+import { setPageNumber } from "../../redux/slices/DataSlice";
 
 const MyPagination = () => {
-  const page = [1, 2, 3, 4];
-  const [curretPage, setCurrentPAge] = useState("1");
+  const { totalPageCount, pageNumber } = useSelector((state) => state.data);
+  const dispatch = useDispatch();
+  const pageNumbers = getPage(totalPageCount, 5);
+  console.log(pageNumber);
 
-  console.log(curretPage, "page num");
   return (
-    <>
-      {/* <div className={styles.paginationContainer}>
-        <button
-          style={
-            curretPage != 1
-              ? {
-                  backgroundColor: "#35536B",
-                  color: "#fff",
-                  transition: "0.3s",
-                }
-              : null
-          }
-        >
-          {" "}
-          {"<"}{" "}
-        </button>
-        {page.map((elem) => {
-          return (
-            <button
-              style={
-                curretPage == elem
-                  ? {
-                      backgroundColor: "#EBEFF2",
-                      transition: "0.3s",
-                    }
-                  : null
+    <div className={styles.paginationContainer}>
+      <button
+        style={
+          pageNumber !== 1
+            ? {
+                backgroundColor: "#35536B",
+                color: "#fff",
+                transition: "0.3s",
               }
-              value={elem}
-              onClick={(e) => {
-                setCurrentPAge(e.target.value);
-              }}
-              key={elem}
-            >
-              {elem}
-            </button>
-          );
-        })}
+            : null
+        }
+        onClick={() => dispatch(setPageNumber(pageNumber - 1))}
+      >
+        {"<"}
+      </button>
+      {pageNumbers.map((pageNum) => (
         <button
           style={
-            curretPage != page[page.length]
+            pageNumber === pageNum
               ? {
-                  backgroundColor: "#35536B",
-                  color: "#fff",
+                  backgroundColor: "#EBEFF2",
                   transition: "0.3s",
                 }
               : null
           }
+          value={pageNum}
+          onClick={(e) => dispatch(setPageNumber(parseInt(e.target.value)))}
+          key={pageNum}
         >
-          {" "}
-          {">"}{" "}
+          {pageNum}
         </button>
-      </div> */}
-      <StyledPagination count={8} variant="outlined" shape="rounded" />
-    </>
+      ))}
+      <button
+        onClick={() => dispatch(setPageNumber(pageNumber + 1))}
+        style={
+          pageNumber !== pageNumbers[pageNumbers.length - 1]
+            ? {
+                backgroundColor: "#35536B",
+                color: "#fff",
+                transition: "0.3s",
+              }
+            : null
+        }
+        disabled={pageNumber === totalPageCount}
+      >
+        {">"}
+      </button>
+    </div>
   );
 };
 

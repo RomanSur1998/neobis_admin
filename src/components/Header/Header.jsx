@@ -7,7 +7,7 @@ import { setCurrentModal } from "../../redux/slices/DataSlice";
 const Header = () => {
   const dispatch = useDispatch();
   function handleAdd() {
-    dispatch(setCurrentModal("editProduct"));
+    dispatch(setCurrentModal("newPosition"));
   }
   return (
     <header className={styles.headerContainer}>

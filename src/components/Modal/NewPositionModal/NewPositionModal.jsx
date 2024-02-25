@@ -5,16 +5,32 @@ import HeaderModals from "../../../ui/HeaderModals/HeaderModals";
 import { icons } from "../../../assets";
 import TextField from "../../../ui/TextField/TextField";
 import SelectDropDown from "../../SelectDropDown/SelectDropDown";
-import Button from "../../Button/Button";
 import ModalButton from "../../../ui/ModalButton/ModalButton";
 import BackgroundModal from "../BackgroundModal/BackgroundModal";
+import { useFormik } from "formik";
+import { useDispatch } from "react-redux";
+import { setCurrentModal } from "../../../redux/slices/DataSlice";
 
 const NewPositionModal = () => {
+  const dispatch = useDispatch();
+  function handleClose() {
+    dispatch(setCurrentModal(null));
+  }
+
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+    },
+  });
   return (
     <BackgroundModal>
       <div className={classnames(styles.modal)}>
         <HeaderModals name={"Новая позиция"} />
-        <form action="" className={classnames(styles.form)}>
+        <form
+          action=""
+          className={classnames(styles.form)}
+          onSubmit={formik.handleSubmit}
+        >
           <label htmlFor="download" className={classnames(styles.label_bold)}>
             Добавьте фото к позиции
             <div className={classnames(styles.downloads_out, styles.flex)}>
@@ -36,7 +52,11 @@ const NewPositionModal = () => {
             Наименования , категория и стоимость{" "}
           </h3>
           <div>
-            <TextField labelName={"Наименование"} name={"add_name"} />
+            <TextField
+              labelName={"Наименование"}
+              name={"add_name"}
+              change={formik.handleChange}
+            />
           </div>
           <label htmlFor="" className={classnames(styles.label)}>
             Описание
@@ -110,9 +130,7 @@ const NewPositionModal = () => {
                 )}
               >
                 Кол-во (в гр, мл, л, кг)
-                <div
-                  className={classnames(styles.flex, styles.gap_8, styles.ex)}
-                >
+                <div className={classnames(styles.flex, styles.ex)}>
                   <input
                     type="text"
                     className={classnames(
@@ -122,14 +140,17 @@ const NewPositionModal = () => {
                       styles.with_17
                     )}
                   />
-                  <SelectDropDown name={"мл"} isSmall={true} />
+
+                  <SelectDropDown name={"мл"} inputType={"small"} />
                 </div>
               </label>
             </div>
             <ModalButton buttonType={"darker"}> Добавить еще +</ModalButton>
           </div>
           <div className={classnames(styles.button_block, styles.flex)}>
-            <ModalButton buttonType={"outlined"}>Отменa</ModalButton>
+            <ModalButton buttonType={"outlined"} click={handleClose}>
+              Отменa
+            </ModalButton>
             <ModalButton buttonType={"filled"}> Добавить</ModalButton>
           </div>
         </form>

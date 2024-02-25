@@ -3,7 +3,7 @@ import styles from "./SelectDropDown.module.css";
 import classnames from "classnames";
 import { icons } from "../../assets";
 
-const SelectDropDown = ({ optionsList, name, isSmall }) => {
+const SelectDropDown = ({ name, inputType }) => {
   const rootRef = useRef();
   const [isOpenSelect, setIsOpenSelect] = useState(false);
 
@@ -11,64 +11,85 @@ const SelectDropDown = ({ optionsList, name, isSmall }) => {
     setIsOpenSelect((prev) => !prev);
   }
 
-  //   useEffect(() => {
-  //     const closeOut = (event) => {
-  //       const { target } = event;
-  //       if (target instanceof Node && !rootRef.current?.contains(target)) {
-  //         setIsOpenSelect((prev) => !prev);
-  //       }
-  //     };
-
-  //     if (isOpenSelect) {
-  //       document.addEventListener("click", closeOut);
-  //     } else {
-  //       document.removeEventListener("click", closeOut);
+  // useEffect(() => {
+  //   const closeOut = (event) => {
+  //     const { target } = event;
+  //     if (target instanceof Node && !rootRef.current?.contains(target)) {
+  //       setIsOpenSelect((prev) => !prev);
   //     }
+  //   };
 
-  //     return () => {
-  //       document.removeEventListener("click", closeOut);
-  //     };
-  //   }, [isOpenSelect]);
+  //   if (isOpenSelect) {
+  //     document.addEventListener("click", closeOut);
+  //   } else {
+  //     document.removeEventListener("click", closeOut);
+  //   }
+
+  //   return () => {
+  //     document.removeEventListener("click", closeOut);
+  //   };
+  // }, [isOpenSelect]);
+
+  const inputTypes = {
+    full: styles.full_width,
+    small: styles.small_width,
+  };
 
   return (
     <div
       ref={rootRef}
-      className={classnames(styles.flex, styles.container, {
-        [styles.container_small]: isSmall,
-      })}
+      className={classnames(
+        styles.flex,
+        styles.container,
+        inputTypes[inputType]
+      )}
     >
       {isOpenSelect ? (
-        <ul className={classnames(styles.options, styles.background)}>
+        <ul
+          className={classnames(
+            styles.options,
+            styles.background,
+            inputTypes[inputType]
+          )}
+        >
           <li
-            className={classnames(styles.option_item, styles.flex, {
-              [styles.option_item_small]: isSmall,
-            })}
+            className={classnames(
+              styles.option_item,
+              styles.flex,
+              inputTypes[inputType]
+            )}
             onClick={handleOpen}
           >
-            {name} <img src={icons.arrow_dowm} alt="" />
+            {name} <img src={icons.arrow_up_black} alt="" />
           </li>
           <hr className={classnames(styles.line)} />
           {/* Здесь будет рендер  */}
           <li
-            className={classnames(styles.option_item, {
-              [styles.option_item_small]: isSmall,
-            })}
+            className={classnames(
+              styles.option_item,
+              styles.flex,
+              inputTypes[inputType]
+            )}
           >
             sdf
           </li>
           <hr className={classnames(styles.line)} />
           <li
-            className={classnames(styles.option_item, {
-              [styles.option_item_small]: isSmall,
-            })}
+            className={classnames(
+              styles.option_item,
+              styles.flex,
+              inputTypes[inputType]
+            )}
           >
             sdf
           </li>
           <hr className={classnames(styles.line)} />
           <li
-            className={classnames(styles.option_item, {
-              [styles.option_item_small]: isSmall,
-            })}
+            className={classnames(
+              styles.option_item,
+              styles.flex,
+              inputTypes[inputType]
+            )}
           >
             sdf
           </li>
@@ -82,12 +103,11 @@ const SelectDropDown = ({ optionsList, name, isSmall }) => {
             styles.width,
             styles.flex,
             styles.align,
-
-            { [styles.with_small]: isSmall }
+            inputTypes[inputType]
           )}
         >
           {name}
-          <img src={icons.arrow_dowm} alt="" />
+          <img src={icons.arrow_black} alt="" />
         </button>
       )}
     </div>

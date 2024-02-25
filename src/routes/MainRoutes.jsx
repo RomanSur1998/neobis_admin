@@ -10,7 +10,6 @@ import { api } from "../api/api";
 const MainRoutes = () => {
   const { accessToken } = useSelector((state) => state.user);
   const dispatch = useDispatch();
-  console.log(accessToken, "token");
 
   useEffect(() => {
     const accessToken = Cookies.get("accessToken");

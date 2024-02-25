@@ -8,4 +8,7 @@ export const validationShemas = {
     identifier: yup.string().required(),
     password: yup.string().required().min(5),
   }),
+  addCategory: yup.object({
+    categoryName: yup.string().required().min(2),
+  }),
 };

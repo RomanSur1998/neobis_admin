@@ -121,7 +121,7 @@ const EditPositionModal = () => {
                       styles.with_17
                     )}
                   />
-                  <SelectDropDown name={"мл"} isSmall={true} />
+                  <SelectDropDown name={"мл"} inputType={"small"} />
                 </div>
               </label>
             </div>

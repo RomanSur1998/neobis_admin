@@ -5,16 +5,16 @@ import classnames from "classnames";
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrentModal, setIsShowPopUp } from "../../redux/slices/DataSlice";
 import DropDownButton from "../../ui/DropDownButton/DropDownButton";
+
 import { getCategoryList } from "../../redux/actions/DataActions";
 
 const DropDown = () => {
-  const { isShowPopUp, category } = useSelector((state) => state.data);
+  const { category } = useSelector((state) => state.data);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getCategoryList());
   }, []);
-
   return (
     <div
       className={classnames(styles.drop_container, styles.flex, styles.column)}

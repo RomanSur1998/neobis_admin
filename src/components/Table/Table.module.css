@@ -17,7 +17,7 @@ td {
   border-bottom: 1px solid rgb(235, 239, 242);
 }
 tr {
-  height: 80px;
+  height: 70px;
   position: relative;
 }
 
@@ -47,5 +47,6 @@ td:first-child {
   align-items: center;
 }
 .pagination_block {
-  margin-top: 20px;
+  position: absolute;
+  bottom: 34px;
 }

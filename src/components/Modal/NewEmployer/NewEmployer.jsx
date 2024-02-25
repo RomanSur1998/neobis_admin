@@ -7,33 +7,18 @@ import TextField from "../../../ui/TextField/TextField";
 import HeaderModals from "../../../ui/HeaderModals/HeaderModals";
 import { icons } from "../../../assets";
 import GraphRow from "../../../ui/GraphRow/GraphRow";
+import SelectDropDown from "../../SelectDropDown/SelectDropDown";
 const NewEmployer = () => {
   return (
     <BackgroundModal>
       <div className={classnames(styles.modal)}>
-        <HeaderModals name={"Новая работник "} />
+        <HeaderModals name={"Новый работник "} />
         <form
           action=""
           className={classnames(styles.flex, styles.direction, styles.gap_16)}
         >
           <div>
-            <label htmlFor="download" className={classnames(styles.label_bold)}>
-              Добавьте фото к позиции
-              <div className={classnames(styles.downloads_out, styles.flex)}>
-                <div className={classnames(styles.downloads_in, styles.flex)}>
-                  <img src={icons.download_icon} alt="" />
-                  <p>
-                    Перетащите изображение для изменения или <span>обзор</span>{" "}
-                  </p>
-                </div>
-              </div>
-              <input
-                type="file"
-                name="file"
-                id="download"
-                className={classnames(styles.file_input)}
-              />
-            </label>
+            <h3>Личные данные</h3>
           </div>
           <div>
             <label
@@ -44,7 +29,7 @@ const NewEmployer = () => {
                 styles.direction
               )}
             >
-              Наименования
+              Логин
               <TextField />
             </label>
           </div>
@@ -57,7 +42,46 @@ const NewEmployer = () => {
                 styles.direction
               )}
             >
-              Адрес
+              Пароль
+              <TextField />
+            </label>
+          </div>
+          <div>
+            <label
+              htmlFor=""
+              className={classnames(
+                styles.flex,
+                styles.label,
+                styles.direction
+              )}
+            >
+              Имя
+              <TextField />
+            </label>
+          </div>
+          <div>
+            <label
+              htmlFor=""
+              className={classnames(
+                styles.flex,
+                styles.label,
+                styles.direction
+              )}
+            >
+              Должность
+              <SelectDropDown inputType={"full"} name={"Выберите должность"} />
+            </label>
+          </div>
+          <div>
+            <label
+              htmlFor=""
+              className={classnames(
+                styles.flex,
+                styles.label,
+                styles.direction
+              )}
+            >
+              Дата рождения
               <TextField />
             </label>
           </div>
@@ -83,21 +107,8 @@ const NewEmployer = () => {
                 styles.direction
               )}
             >
-              Ссылка на 2ГИС
-              <TextField />
-            </label>
-          </div>
-          <div>
-            <label
-              htmlFor=""
-              className={classnames(
-                styles.flex,
-                styles.label,
-                styles.direction
-              )}
-            >
-              Количество столиков
-              <TextField />
+              Выберите филлиал
+              <SelectDropDown name={"Выберите категорию"} inputType={"full"} />
             </label>
           </div>
           <div className={classnames(styles.time_container, styles.flex)}>

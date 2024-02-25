@@ -9,7 +9,8 @@ import BranchModal from "./BranchModal/BranchModal";
 import NewEmployer from "./NewEmployer/NewEmployer";
 
 const Modals = () => {
-  const { currentModal } = useSelector((state) => state.data);
+  const { currentModal, modalProps } = useSelector((state) => state.data);
+
   const ModalsMap = {
     newCategory: NewCategoryModal,
     deleteCategory: DeleteModal,
@@ -20,7 +21,8 @@ const Modals = () => {
     addNewBranch: BranchModal,
     newEmployer: NewEmployer,
   };
-  return currentModal ? ModalsMap[currentModal]() : null;
+
+  return currentModal ? ModalsMap[currentModal](modalProps) : null;
 };
 
 export default Modals;
