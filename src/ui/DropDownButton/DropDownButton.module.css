@@ -1,0 +1,18 @@
+.drop_button {
+  align-items: center;
+  border: none;
+  background-color: transparent;
+  color: #2a3440;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: 0.1s ease-in-out;
+}
+.flex {
+  display: flex;
+}
+.active {
+  color: #f45656;
+  transition: 0.1s ease-in-out;
+}

@@ -1,0 +1,31 @@
+.button {
+  width: 260px;
+  height: 56px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.outlined {
+  background-color: transparent;
+  border: 2px solid #35536b;
+  color: #35536b;
+}
+.filled {
+  background-color: #35536b;
+  border: none;
+  color: #fff;
+}
+
+.darker {
+  width: 252px;
+  height: 54px;
+  border: none;
+  background-color: #2a3440;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 20px;
+}

@@ -6,20 +6,24 @@ import AuthLayout from "../../layouts/AuthLayout/AuthLayout";
 import LogoHeader from "../LogoHeader/LogoHeader";
 import { useFormik } from "formik";
 import * as yup from "yup";
+import { validationShemas } from "../../helpers/validationShemas";
+import { useDispatch } from "react-redux";
+import { authUser } from "../../redux/actions/UserActions";
+import { useNavigate } from "react-router-dom";
 
 const SignInForm = (error = false) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
-      email: "",
+      identifier: "",
       password: "",
     },
     onSubmit: (values) => {
       console.log(values);
+      dispatch(authUser({ data: values, navigate }));
     },
-    validationSchema: yup.object({
-      email: yup.string().required().email(),
-      password: yup.string().required().min(6),
-    }),
+    validationSchema: validationShemas.loginForm,
   });
   return (
     <>
@@ -29,8 +33,8 @@ const SignInForm = (error = false) => {
           <h2 className={styles.title}>Вход</h2>
           <InputField
             placeholder={"Электронная почта"}
-            type="email"
-            name="email"
+            type="text"
+            name="identifier"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             error={error}
@@ -43,8 +47,9 @@ const SignInForm = (error = false) => {
             onBlur={formik.handleBlur}
             error={error}
           />
-
-          <Button type="submit">Вход</Button>
+          <Button type="submit" isdisabled={true}>
+            Вход
+          </Button>
         </form>
       </AuthLayout>
     </>

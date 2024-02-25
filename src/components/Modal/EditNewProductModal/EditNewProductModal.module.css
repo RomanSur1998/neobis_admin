@@ -1,0 +1,58 @@
+.modal {
+  width: 600px;
+  min-height: 700px;
+  border-radius: 30px;
+  background-color: #fff;
+  margin: 40px;
+  padding: 32px;
+}
+.flex {
+  display: flex;
+}
+.text {
+  color: rgb(42, 52, 64);
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 23px;
+}
+
+.button_block {
+  justify-content: space-between;
+}
+.label {
+  color: #5b7e9a;
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+.direction {
+  flex-direction: column;
+}
+
+.with_17 {
+  width: 170px;
+}
+.width {
+  border: none;
+  width: 253px;
+  height: 64px;
+  border-radius: 10px;
+  color: #2a3440;
+  font-size: 18px;
+  font-weight: 400;
+}
+.select {
+  width: 252px;
+  justify-content: space-between;
+}
+
+.field {
+  width: 170px;
+}
+
+.gap_16 {
+  gap: 16px;
+}
+.position {
+  margin-top: 70px;
+}

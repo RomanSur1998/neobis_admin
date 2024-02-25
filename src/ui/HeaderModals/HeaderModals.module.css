@@ -1,0 +1,11 @@
+.title {
+  justify-content: space-between;
+}
+.flex {
+  display: flex;
+}
+.cancel {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}

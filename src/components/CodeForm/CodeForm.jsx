@@ -2,7 +2,6 @@ import { useFormik } from "formik";
 import React from "react";
 import { useOtpInput } from "react-otp-input-hook";
 import styles from "./CodeForm.module.css";
-import * as yup from "yup";
 import AuthLayout from "../../layouts/AuthLayout/AuthLayout";
 import Button from "../Button/Button";
 import LogoHeader from "../LogoHeader/LogoHeader";
@@ -53,7 +52,7 @@ const CodeForm = ({ error }) => {
             <input {...register(defaultOptions)} />
             <input {...register(defaultOptions)} />
           </div>
-          <Button type="submit" isDisabled={formik.isValid || null}>
+          <Button type="submit" isDisabled={formik.isValid}>
             Войти
           </Button>
         </form>

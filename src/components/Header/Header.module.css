@@ -1,0 +1,61 @@
+.imageButton {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.title {
+  color: rgb(42, 52, 64);
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 120%;
+  text-align: left;
+}
+.headerContainer {
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 24px;
+  background-color: #fff;
+}
+.input {
+  border-radius: 14px;
+  background: rgb(235, 239, 242);
+  width: 350px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 16px;
+}
+.containerRight {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+.input input {
+  width: 300px;
+  height: 40px;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  color: rgb(53, 83, 107);
+  font-size: 18px;
+  font-weight: 500;
+}
+.createButtnon {
+  width: 256px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 14px;
+  border: none;
+  background: rgb(53, 83, 107);
+  color: rgb(255, 255, 255);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
