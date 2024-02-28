@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Table from "../../components/Table/Table";
 import MainLayout from "../../layouts/MainLayout/MainLayout";
 import { stockBody, stockHeader } from "../../helpers/table/tableHeaders";
 import StockFilter from "../../components/StockFilter/StockFilter";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getStockList } from "../../redux/actions/DataActions";
 
 const StokePage = () => {
-  const { tableDataList } = useSelector((state) => state.data);
+  const { tableDataList, pageNumber } = useSelector((state) => state.data);
+  const dispatch = useDispatch(pageNumber);
+
+  useEffect(() => {
+    dispatch(getStockList());
+  }, []);
+
   return (
     <>
       <MainLayout>

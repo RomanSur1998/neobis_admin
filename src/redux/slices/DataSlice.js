@@ -1,7 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
+  deleteCategory,
   getCategoryList,
   getMenuList,
+  getStockList,
   setNewCategory,
 } from "../actions/DataActions";
 import { changeTableData } from "../../helpers/table/changeTableData";
@@ -17,6 +19,11 @@ const initialState = {
   count: null,
   totalPageCount: null,
   pageNumber: 1,
+  filter: [
+    { name: "Готовая продукция", active: true },
+    { name: "Сырье", active: false },
+    { name: "Заканчивающиеся продукты", end: true, active: false },
+  ],
 };
 
 export const dataSlice = createSlice({
@@ -41,12 +48,22 @@ export const dataSlice = createSlice({
     setProps(state, action) {
       state.modalProps = action.payload;
     },
+    setFilter(state, action) {
+      state.filter = state.filter.map((elem) => {
+        if (elem.name === action.payload) {
+          return { ...elem, active: !elem.active };
+        } else {
+          return { ...elem, active: false };
+        }
+      });
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getCategoryList.fulfilled, (state, action) => {
       state.category = action.payload.data;
     });
     builder.addCase(getMenuList.fulfilled, (state, action) => {
+      console.log(action.payload);
       state.tableDataList = changeTableData(action.payload.data.responses);
       state.totalPageCount = action.payload.data.allCount;
     });
@@ -55,6 +72,15 @@ export const dataSlice = createSlice({
     });
     builder.addCase(setNewCategory.fulfilled, (state, action) => {
       state.status = false;
+      state.currentModal = null;
+    });
+    builder.addCase(deleteCategory.fulfilled, (state, action) => {
+      state.currentModal = null;
+    });
+    builder.addCase(getStockList.fulfilled, (state, action) => {
+      console.log(action.payload);
+      state.tableDataList = changeTableData(action.payload.data.responses);
+      state.totalPageCount = action.payload.data.allCount;
     });
   },
 });
@@ -66,5 +92,6 @@ export const {
   setCategory,
   setPageNumber,
   setProps,
+  setFilter,
 } = dataSlice.actions;
 export default dataSlice.reducer;

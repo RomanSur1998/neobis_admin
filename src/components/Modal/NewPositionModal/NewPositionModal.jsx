@@ -51,13 +51,12 @@ const NewPositionModal = () => {
           <h3 className={classnames(styles.label_bold)}>
             Наименования , категория и стоимость{" "}
           </h3>
-          <div>
-            <TextField
-              labelName={"Наименование"}
-              name={"add_name"}
-              change={formik.handleChange}
-            />
-          </div>
+          <label
+            className={classnames(styles.flex, styles.label, styles.direction)}
+          >
+            Наименование
+            <TextField name={"add_name"} change={formik.handleChange} />
+          </label>
           <label htmlFor="" className={classnames(styles.label)}>
             Описание
             <textarea

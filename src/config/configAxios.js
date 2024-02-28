@@ -51,7 +51,7 @@ configAxios.interceptors.response.use(
           Cookies.set("accessToken", result.data.accessToken);
           Cookies.set("refreshToken", result.data.refreshToken);
           config.headers.Authorization = `Bearer ${result.data.accessToken}`;
-          return axios(config);
+          return configAxios(config);
         }
       } catch (refreshError) {
         return Promise.reject(refreshError);

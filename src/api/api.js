@@ -1,5 +1,6 @@
 import Cookies from "js-cookie";
 import { configAxios } from "../config/configAxios";
+import axios, { AxiosHeaders } from "axios";
 
 export const api = {
   authorization: async (data, navigate) => {
@@ -29,6 +30,7 @@ export const api = {
       const response = await configAxios.get(
         `/api/v1/menu/all?number=${pageNumber}&size=5`
       );
+
       return response;
     } catch (error) {
       return error;
@@ -37,6 +39,7 @@ export const api = {
   setNewCategory: async (data) => {
     try {
       const response = await configAxios.post("/api/v1/category/add", data);
+      console.log(response);
       return response;
     } catch (error) {
       console.log(error);
@@ -44,10 +47,13 @@ export const api = {
     }
   },
   deleteCategory: async (data) => {
+    const newData = {
+      name: data,
+    };
     try {
+      console.log(newData);
       const response = await configAxios.delete(
-        "/api/v1/category/delete",
-        data
+        `/api/v1/category/delete/${data}`
       );
       return response;
     } catch (error) {
@@ -55,4 +61,39 @@ export const api = {
       return error;
     }
   },
+
+  getStockList: async () => {
+    try {
+      const response = await configAxios.get(
+        `/api/v1/warehouse/all?number=1&size=2`
+      );
+      return response;
+    } catch (error) {
+      console.log(error, "stock error");
+      return error;
+    }
+  },
+
+  // deleteCategory: async (data) => {
+  //   const newData = {
+  //     name: data,
+  //   };
+  //   try {
+  //     console.log(newData);
+  //     const response = await axios.delete(
+  //       "https://neo-cafe.up.railway.app/api/v1/category/delete",
+  //       newData,
+  //       {
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //           Authorization: Cookies.get("accessToken"),
+  //         },
+  //       }
+  //     );
+  //     return response;
+  //   } catch (error) {
+  //     console.log(error);
+  //     return error;
+  //   }
+  // },
 };

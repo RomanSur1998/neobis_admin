@@ -1,0 +1,21 @@
+.button {
+  border: none;
+  padding-inline: 10px;
+  background-color: transparent;
+  color: #5f6366;
+  font-size: 16px;
+  font-weight: 700;
+  padding-bottom: 20px;
+  cursor: pointer;
+}
+.active_btn {
+  border-bottom: 3px solid #35536b;
+  color: #35536b;
+}
+.end {
+  color: #f4a5a5;
+}
+.end_active {
+  color: #ff4b4b;
+  border-bottom: 3px solid #ff4b4b;
+}

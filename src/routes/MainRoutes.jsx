@@ -16,18 +16,6 @@ const MainRoutes = () => {
     dispatch(setAccessToken(accessToken));
   }, []);
 
-  async function getREf() {
-    try {
-      const resp = await api.getRefresh();
-      console.log(resp, "resp");
-      return resp;
-    } catch (error) {
-      console.log(error);
-    }
-  }
-  useEffect(() => {
-    getREf();
-  }, []);
   return (
     <Routes>
       {BASE_ROUT_COLLECTION.map((elem) => {

@@ -51,3 +51,15 @@ export const deleteCategory = createAsyncThunk(
     }
   }
 );
+
+export const getStockList = createAsyncThunk(
+  "data/getStockList",
+  async (data) => {
+    try {
+      const response = await api.getStockList(data);
+      return response;
+    } catch (error) {
+      return error;
+    }
+  }
+);
