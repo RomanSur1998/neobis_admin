@@ -1,14 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
+  branchesSearch,
   deleteCategory,
+  employersSearch,
+  getAllEmployers,
+  getBranch,
   getCategoryList,
   getMenuList,
+  getOutStock,
   getStockList,
+  menuSearch,
   setNewCategory,
+  stockSearch,
 } from "../actions/DataActions";
-import { changeTableData } from "../../helpers/table/changeTableData";
 
 const initialState = {
+  search: "",
   status: false,
   route: "/menu",
   currentModal: null,
@@ -24,6 +31,7 @@ const initialState = {
     { name: "Сырье", active: false },
     { name: "Заканчивающиеся продукты", end: true, active: false },
   ],
+  filterValue: "Готовая продукция",
 };
 
 export const dataSlice = createSlice({
@@ -57,14 +65,19 @@ export const dataSlice = createSlice({
         }
       });
     },
+    setFilterValue(state, action) {
+      state.filterValue = action.payload;
+    },
+    setSearch(state, action) {
+      state.search = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getCategoryList.fulfilled, (state, action) => {
       state.category = action.payload.data;
     });
     builder.addCase(getMenuList.fulfilled, (state, action) => {
-      console.log(action.payload);
-      state.tableDataList = changeTableData(action.payload.data.responses);
+      state.tableDataList = action.payload.data.responses;
       state.totalPageCount = action.payload.data.allCount;
     });
     builder.addCase(setNewCategory.pending, (state, action) => {
@@ -78,9 +91,29 @@ export const dataSlice = createSlice({
       state.currentModal = null;
     });
     builder.addCase(getStockList.fulfilled, (state, action) => {
-      console.log(action.payload);
-      state.tableDataList = changeTableData(action.payload.data.responses);
+      state.tableDataList = action.payload.data.responses;
       state.totalPageCount = action.payload.data.allCount;
+    });
+    builder.addCase(getBranch.fulfilled, (state, action) => {
+      state.tableDataList = action.payload.data.responses;
+    });
+    builder.addCase(getOutStock.fulfilled, (state, action) => {
+      state.tableDataList = action.payload.data.responses;
+    });
+    builder.addCase(menuSearch.fulfilled, (state, action) => {
+      state.tableDataList = action.payload.data.responses;
+    });
+    builder.addCase(stockSearch.fulfilled, (state, action) => {
+      state.tableDataList = action.payload.data.responses;
+    });
+    builder.addCase(branchesSearch.fulfilled, (state, action) => {
+      state.tableDataList = action.payload.data.responses;
+    });
+    builder.addCase(getAllEmployers.fulfilled, (state, action) => {
+      state.tableDataList = action.payload.data.responses;
+    });
+    builder.addCase(employersSearch.fulfilled, (state, action) => {
+      state.tableDataList = action.payload.data.responses;
     });
   },
 });
@@ -93,5 +126,7 @@ export const {
   setPageNumber,
   setProps,
   setFilter,
+  setFilterValue,
+  setSearch,
 } = dataSlice.actions;
 export default dataSlice.reducer;

@@ -2,13 +2,27 @@ import React, { useEffect, useRef, useState } from "react";
 import styles from "./SelectDropDown.module.css";
 import classnames from "classnames";
 import { icons } from "../../assets";
+import { useDispatch, useSelector } from "react-redux";
+import { setCategory } from "../../redux/slices/DataSlice";
+import { getCategoryList } from "../../redux/actions/DataActions";
 
-const SelectDropDown = ({ name, inputType }) => {
+const SelectDropDown = ({ name, inputType, selectList, change }) => {
+  console.log(selectList, "category");
+  const dispatch = useDispatch();
   const rootRef = useRef();
   const [isOpenSelect, setIsOpenSelect] = useState(false);
 
   function handleOpen() {
     setIsOpenSelect((prev) => !prev);
+  }
+
+  useEffect(() => {
+    dispatch(getCategoryList());
+  }, []);
+
+  function handleChangeCategory(categoryName) {
+    change(categoryName);
+    setIsOpenSelect(false);
   }
 
   // useEffect(() => {
@@ -63,37 +77,23 @@ const SelectDropDown = ({ name, inputType }) => {
             {name} <img src={icons.arrow_up_black} alt="" />
           </li>
           <hr className={classnames(styles.line)} />
-          {/* Здесь будет рендер  */}
-          <li
-            className={classnames(
-              styles.option_item,
-              styles.flex,
-              inputTypes[inputType]
-            )}
-          >
-            sdf
-          </li>
-          <hr className={classnames(styles.line)} />
-          <li
-            className={classnames(
-              styles.option_item,
-              styles.flex,
-              inputTypes[inputType]
-            )}
-          >
-            sdf
-          </li>
-          <hr className={classnames(styles.line)} />
-          <li
-            className={classnames(
-              styles.option_item,
-              styles.flex,
-              inputTypes[inputType]
-            )}
-          >
-            sdf
-          </li>
-          {/* Здесь будет рендер  */}
+          {selectList?.map((select) => {
+            return (
+              <>
+                <li
+                  value={select}
+                  onClick={() => handleChangeCategory(select)}
+                  className={classnames(
+                    styles.option_item,
+                    styles.flex,
+                    inputTypes[inputType]
+                  )}
+                >
+                  {select}
+                </li>
+              </>
+            );
+          })}
         </ul>
       ) : (
         <button

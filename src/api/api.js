@@ -20,6 +20,7 @@ export const api = {
   getCategoryList: async () => {
     try {
       const response = await configAxios.get("/api/v1/category/all");
+
       return response;
     } catch (error) {
       return error.response;
@@ -30,6 +31,7 @@ export const api = {
       const response = await configAxios.get(
         `/api/v1/menu/all?number=${pageNumber}&size=5`
       );
+      console.log(response);
 
       return response;
     } catch (error) {
@@ -62,10 +64,11 @@ export const api = {
     }
   },
 
-  getStockList: async () => {
+  getStockList: async (data) => {
     try {
       const response = await configAxios.get(
-        `/api/v1/warehouse/all?number=1&size=2`
+        `/api/v1/warehouse/category/${data}&number=1&size=5`,
+        { text: data }
       );
       return response;
     } catch (error) {
@@ -73,27 +76,87 @@ export const api = {
       return error;
     }
   },
+  getOutStock: async () => {
+    try {
+      const response = await configAxios.get(
+        "/api/v1/warehouse/out-stock?number=1&size=5"
+      );
 
-  // deleteCategory: async (data) => {
-  //   const newData = {
-  //     name: data,
-  //   };
-  //   try {
-  //     console.log(newData);
-  //     const response = await axios.delete(
-  //       "https://neo-cafe.up.railway.app/api/v1/category/delete",
-  //       newData,
-  //       {
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //           Authorization: Cookies.get("accessToken"),
-  //         },
-  //       }
-  //     );
-  //     return response;
-  //   } catch (error) {
-  //     console.log(error);
-  //     return error;
-  //   }
-  // },
+      return response;
+    } catch (error) {
+      console.log(error, "out stock");
+      return error;
+    }
+  },
+
+  getBranch: async () => {
+    try {
+      const response = await configAxios.get(
+        "/api/v1/filial/all?number=1&size=5"
+      );
+      return response;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+  },
+
+  menuSearch: async (data) => {
+    try {
+      const response = await configAxios.get(
+        `/api/v1/menu/find-by-name/${data}?number=1&size=5`
+      );
+      console.log(response, "search");
+      return response;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+  },
+  stockSearch: async (data) => {
+    try {
+      const response = await configAxios.get(
+        `/api/v1/warehouse/find/${data}?number=1&size=5`
+      );
+      return response;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+  },
+  branchesSearch: async (data) => {
+    try {
+      const response = await configAxios.get(
+        `/api/v1/warehouse/find/${data}?number=1&size=5`
+      );
+      return response;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+  },
+
+  getAllEmployers: async () => {
+    try {
+      const response = await configAxios.get(
+        `/api/v1/stuff/all?number=1&size=5`
+      );
+      return response;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+  },
+
+  employersSearch: async (data) => {
+    try {
+      const response = await configAxios.get(
+        `/api/v1/stuff/all?number=1&size=5`
+      );
+      return response;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+  },
 };

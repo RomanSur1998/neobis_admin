@@ -11,7 +11,7 @@ const NewProductStockModal = () => {
   return (
     <BackgroundModal>
       <div className={classnames(styles.modal)}>
-        <HeaderModals name={"Новая позиция"} />
+        <HeaderModals name={"Новая продукция"} />
         <form
           action=""
           className={classnames(styles.flex, styles.direction, styles.gap_16)}
@@ -30,7 +30,6 @@ const NewProductStockModal = () => {
             >
               Наименования
               <TextField />
-              {/* <input type="text" /> */}
             </label>
           </div>
 
@@ -47,7 +46,6 @@ const NewProductStockModal = () => {
               <div className={classnames(styles.flex, styles.select)}>
                 <div className={classnames(styles.field)}>
                   <TextField />
-                  {/* <input type="text" /> */}
                 </div>
                 <SelectDropDown name={"мл"} inputType={"small"} />
               </div>

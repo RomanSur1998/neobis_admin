@@ -8,6 +8,7 @@ import { getMenuList } from "../../redux/actions/DataActions";
 
 const MenuPage = () => {
   const { tableDataList, pageNumber } = useSelector((state) => state.data);
+  console.log(tableDataList, "данные из стора ");
 
   const dispatch = useDispatch();
 

@@ -4,15 +4,21 @@ import MainLayout from "../../layouts/MainLayout/MainLayout";
 import { stockBody, stockHeader } from "../../helpers/table/tableHeaders";
 import StockFilter from "../../components/StockFilter/StockFilter";
 import { useDispatch, useSelector } from "react-redux";
-import { getStockList } from "../../redux/actions/DataActions";
+import { getOutStock, getStockList } from "../../redux/actions/DataActions";
 
 const StokePage = () => {
-  const { tableDataList, pageNumber } = useSelector((state) => state.data);
+  const { tableDataList, pageNumber, filterValue } = useSelector(
+    (state) => state.data
+  );
   const dispatch = useDispatch(pageNumber);
 
   useEffect(() => {
-    dispatch(getStockList());
-  }, []);
+    console.log(filterValue, "filter");
+    if (filterValue !== "Заканчивающиеся продукты") {
+      dispatch(getStockList(filterValue));
+    }
+    dispatch(getOutStock());
+  }, [filterValue]);
 
   return (
     <>

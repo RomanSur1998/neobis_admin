@@ -27,8 +27,8 @@ const BodyRow = ({ row }) => {
   }, [isShowSelectAction]);
   return (
     <tr>
-      {row?.map((cell, i) => {
-        return <td key={i}>{cell}</td>;
+      {row.dataList?.map((cell, i) => {
+        return <td key={i}>{cell[1]}</td>;
       })}
       <td>
         {isShowSelectAction && <SelectAction />}

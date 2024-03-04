@@ -38,6 +38,10 @@
   gap: 16px;
   cursor: pointer;
   justify-content: space-between;
+  border-bottom: 1px solid #cdd3dd;
+}
+.option_item:last-child {
+  border: none;
 }
 .align {
   align-items: center;
@@ -54,10 +58,6 @@
   z-index: 2;
 }
 
-.line {
-  height: 1px;
-  background-color: #cdd3dd;
-}
 .small_width {
   width: 66px;
   justify-content: center;

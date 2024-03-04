@@ -63,3 +63,76 @@ export const getStockList = createAsyncThunk(
     }
   }
 );
+export const getOutStock = createAsyncThunk(
+  "data/getOutStock",
+  async (data) => {
+    try {
+      const response = await api.getOutStock(data);
+      return response;
+    } catch (error) {
+      return error;
+    }
+  }
+);
+export const getBranch = createAsyncThunk("data/getBranch", async () => {
+  try {
+    const response = await api.getBranch();
+    return response;
+  } catch (error) {
+    return error;
+  }
+});
+
+export const menuSearch = createAsyncThunk("data/menuSearch", async (data) => {
+  try {
+    const response = await api.menuSearch(data);
+    return response;
+  } catch (error) {
+    return error;
+  }
+});
+export const stockSearch = createAsyncThunk(
+  "data/stockSearch",
+  async (data) => {
+    try {
+      const response = await api.stockSearch(data);
+      return response;
+    } catch (error) {
+      return error;
+    }
+  }
+);
+export const branchesSearch = createAsyncThunk(
+  "data/branchesSearch",
+  async (data) => {
+    try {
+      const response = await api.branchesSearch(data);
+      return response;
+    } catch (error) {
+      return error;
+    }
+  }
+);
+export const getAllEmployers = createAsyncThunk(
+  "data/getAllEmployers",
+  async () => {
+    try {
+      const response = await api.getAllEmployers();
+      return response;
+    } catch (error) {
+      console.log(error, "employer all");
+      return error;
+    }
+  }
+);
+export const employersSearch = createAsyncThunk(
+  "data/employersSearch",
+  async (data) => {
+    try {
+      const response = await api.employersSearch(data);
+      return response;
+    } catch (error) {
+      return error;
+    }
+  }
+);

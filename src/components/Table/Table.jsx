@@ -7,11 +7,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { setIsShowPopUp } from "../../redux/slices/DataSlice";
 import BodyRow from "../../ui/BodyRow/BodyRow";
 import MyPagination from "../Pagination/MyPagination";
+import { changeTableData } from "../../helpers/table/changeTableData";
 
 const Table = ({ headerList, bodyList }) => {
   const { isShowPopUp } = useSelector((state) => state.data);
   const dispatch = useDispatch();
   const rootRef = useRef();
+  console.log(changeTableData(bodyList), "data list");
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -57,9 +59,12 @@ const Table = ({ headerList, bodyList }) => {
           </tr>
         </thead>
         <tbody>
-          {bodyList?.map((row, index) => {
+          {changeTableData(bodyList)?.map((row, index) => {
             return <BodyRow row={row} key={index} />;
           })}
+          {/* {bodyList?.map((row, index) => {
+            return <BodyRow row={row} key={index} />;
+          })} */}
         </tbody>
       </table>
       <div className={classnames(styles.pagination_block)}>
