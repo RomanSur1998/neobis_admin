@@ -25,6 +25,7 @@
   border: 1px solid #00315d;
   width: 22px;
   height: 22px;
+  cursor: pointer;
 }
 .time_block {
   width: 290px;

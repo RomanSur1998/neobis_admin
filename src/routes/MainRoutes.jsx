@@ -8,7 +8,7 @@ import { setAccessToken } from "../redux/slices/UserSlice";
 import { api } from "../api/api";
 
 const MainRoutes = () => {
-  const { accessToken } = useSelector((state) => state.user);
+  const { accessToken = true } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   useEffect(() => {

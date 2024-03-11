@@ -8,8 +8,36 @@ import TextField from "../../../ui/TextField/TextField";
 import HeaderModals from "../../../ui/HeaderModals/HeaderModals";
 import { icons } from "../../../assets";
 import GraphRow from "../../../ui/GraphRow/GraphRow";
+import { setCurrentModal } from "../../../redux/slices/DataSlice";
+import { useDispatch } from "react-redux";
+import { useFormik } from "formik";
 
-const BranchModal = () => {
+const BranchModal = (props) => {
+  const dispatch = useDispatch();
+  function handleClose() {
+    dispatch(setCurrentModal(null));
+  }
+  const formik = useFormik({
+    initialValues: {
+      file: null,
+      name: "",
+      address: "",
+      phoneNumber: "",
+      link: "",
+      tableQuantity: "",
+
+      workDays: [
+        { day: "Понедельник", checked: false, from: "", to: "" },
+        { day: "Вторник", checked: false, from: "", to: "" },
+        { day: "Среда", checked: false, from: "", to: "" },
+        { day: "Четверг", checked: false, from: "", to: "" },
+        { day: "Пятница", checked: false, from: "", to: "" },
+        { day: "Суббота", checked: false, from: "", to: "" },
+        { day: "Воскресенье", checked: false, from: "", to: "" },
+      ],
+    },
+  });
+  console.log(formik.values, "FORMIK");
   return (
     <BackgroundModal>
       <div className={classnames(styles.modal)}>
@@ -120,7 +148,9 @@ const BranchModal = () => {
               styles.position
             )}
           >
-            <ModalButton buttonType={"outlined"}>Отменa</ModalButton>
+            <ModalButton buttonType={"outlined"} click={handleClose}>
+              Отменa
+            </ModalButton>
             <ModalButton buttonType={"filled"}> Добавить</ModalButton>
           </div>
         </form>

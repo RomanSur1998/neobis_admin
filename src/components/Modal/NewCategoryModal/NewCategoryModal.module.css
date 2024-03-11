@@ -10,6 +10,13 @@
   align-items: center;
   justify-content: center;
 }
+.label {
+  flex-direction: column;
+  gap: 10px;
+  color: #35536b;
+  font-size: 20px;
+  font-weight: 400;
+}
 .modal {
   width: 600px;
   height: 335px;

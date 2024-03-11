@@ -39,24 +39,11 @@ export const setNewCategory = createAsyncThunk(
   }
 );
 
-export const deleteCategory = createAsyncThunk(
-  "data/deleteCategory",
-  async (data) => {
-    try {
-      console.log(data, "data");
-      const response = await api.deleteCategory(data);
-      return response;
-    } catch (error) {
-      return error;
-    }
-  }
-);
-
 export const getStockList = createAsyncThunk(
   "data/getStockList",
-  async (data) => {
+  async ({ data, pageNumber }) => {
     try {
-      const response = await api.getStockList(data);
+      const response = await api.getStockList(data, pageNumber);
       return response;
     } catch (error) {
       return error;
@@ -136,3 +123,117 @@ export const employersSearch = createAsyncThunk(
     }
   }
 );
+export const setPosition = createAsyncThunk(
+  "data/setPosition",
+  async (data) => {
+    try {
+      const response = await api.setPosition(data);
+      return response;
+    } catch (error) {
+      return error;
+    }
+  }
+);
+export const setProduct = createAsyncThunk("data/setProduct", async (data) => {
+  try {
+    const response = await api.setProduct(data);
+    return response;
+  } catch (error) {
+    return error;
+  }
+});
+export const setBranch = createAsyncThunk("data/setBranch", async (data) => {
+  try {
+    const response = await api.setBranch(data);
+    return response;
+  } catch (error) {
+    return error;
+  }
+});
+export const setEmployer = createAsyncThunk(
+  "data/setEmployer",
+  async (data) => {
+    try {
+      const response = await api.setEmployer(data);
+      return response;
+    } catch (error) {
+      return error;
+    }
+  }
+);
+export const getFilialName = createAsyncThunk(
+  "data/getFilialName",
+  async () => {
+    try {
+      const response = await api.getFilialName();
+      return response;
+    } catch (error) {
+      return error;
+    }
+  }
+);
+
+// ! DELETE
+export const deleteMenuPostition = createAsyncThunk(
+  "data/deleteMenuPostition",
+  async (id) => {
+    try {
+      const response = api.deleteMenuPostition(id);
+      return response;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+  }
+);
+export const deleteFilial = createAsyncThunk(
+  "data/deleteFilial",
+  async (data) => {
+    try {
+      const response = api.deleteFilial(data);
+      return response;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+  }
+);
+export const deleteEmployer = createAsyncThunk(
+  "data/deleteEmployer",
+  async (data) => {
+    try {
+      const response = api.deleteEmployer(data);
+      return response;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+  }
+);
+export const deleteStockProduct = createAsyncThunk(
+  "data/deleteMenuPostition",
+  async (data) => {
+    try {
+      const response = api.deleteStockProduct(data);
+      return response;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+  }
+);
+
+export const deleteCategory = createAsyncThunk(
+  "data/deleteCategory",
+  async (data) => {
+    try {
+      console.log(data, "data");
+      const response = await api.deleteCategory(data);
+      return response;
+    } catch (error) {
+      return error;
+    }
+  }
+);
+
+// ! DELETE

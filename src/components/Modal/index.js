@@ -2,9 +2,9 @@ import { useSelector } from "react-redux";
 import NewCategoryModal from "./NewCategoryModal/NewCategoryModal";
 import NewPositionModal from "./NewPositionModal/NewPositionModal";
 import DeleteModal from "./DeleteModal/DeleteModal";
-import EditPositionModal from "./EditPositionModal/EditPositionModal";
+// import EditPositionModal from "./EditPositionModal/EditPositionModal";
 import NewProductStockModal from "./NewProductStockModal/NewProductStockModal";
-import EditNewProductModal from "./EditNewProductModal/EditNewProductModal";
+// import EditNewProductModal from "./EditNewProductModal/EditNewProductModal";
 import BranchModal from "./BranchModal/BranchModal";
 import NewEmployer from "./NewEmployer/NewEmployer";
 
@@ -15,9 +15,9 @@ const Modals = () => {
     newCategory: NewCategoryModal,
     deleteCategory: DeleteModal,
     newPosition: NewPositionModal,
-    editPosition: EditPositionModal,
+    // editPosition: EditPositionModal,
     newProduct: NewProductStockModal,
-    editProduct: EditNewProductModal,
+    // editProduct: EditNewProductModal,
     addNewBranch: BranchModal,
     newEmployer: NewEmployer,
   };

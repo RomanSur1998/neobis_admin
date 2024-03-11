@@ -3,7 +3,11 @@ import styles from "./DropDown.module.css";
 import { icons } from "../../assets";
 import classnames from "classnames";
 import { useDispatch, useSelector } from "react-redux";
-import { setCurrentModal, setIsShowPopUp } from "../../redux/slices/DataSlice";
+import {
+  setCurrentModal,
+  setIsShowPopUp,
+  setModalTitle,
+} from "../../redux/slices/DataSlice";
 import DropDownButton from "../../ui/DropDownButton/DropDownButton";
 
 import { getCategoryList } from "../../redux/actions/DataActions";
@@ -15,6 +19,11 @@ const DropDown = () => {
   useEffect(() => {
     dispatch(getCategoryList());
   }, []);
+
+  function handleOpenModal() {
+    dispatch(setCurrentModal("newCategory"));
+    dispatch(setModalTitle("Новая категория"));
+  }
   return (
     <div
       className={classnames(styles.drop_container, styles.flex, styles.column)}
@@ -33,7 +42,7 @@ const DropDown = () => {
         })}
       </div>
       <button
-        onClick={() => dispatch(setCurrentModal("newCategory"))}
+        onClick={handleOpenModal}
         className={classnames(styles.drop_button, styles.flex, styles.add)}
       >
         Добавить

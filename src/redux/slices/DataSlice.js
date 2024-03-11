@@ -2,15 +2,21 @@ import { createSlice } from "@reduxjs/toolkit";
 import {
   branchesSearch,
   deleteCategory,
+  deleteMenuPostition,
   employersSearch,
   getAllEmployers,
   getBranch,
   getCategoryList,
+  getFilialName,
   getMenuList,
   getOutStock,
   getStockList,
   menuSearch,
+  setBranch,
+  setEmployer,
   setNewCategory,
+  setPosition,
+  setProduct,
   stockSearch,
 } from "../actions/DataActions";
 
@@ -20,8 +26,11 @@ const initialState = {
   route: "/menu",
   currentModal: null,
   modalProps: null,
+  deleteType: "",
+  modalTitle: "",
   isShowPopUp: false,
   category: ["Загрузка..."],
+  filialName: [],
   tableDataList: null,
   count: null,
   totalPageCount: null,
@@ -71,14 +80,28 @@ export const dataSlice = createSlice({
     setSearch(state, action) {
       state.search = action.payload;
     },
+    setTableDataList(state, action) {
+      state.tableDataList = [...state.tableDataList, ...action.payload];
+    },
+    setModalTitle(state, action) {
+      state.modalTitle = action.payload;
+    },
+    setDeleteType(state, action) {
+      state.deleteType = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getCategoryList.fulfilled, (state, action) => {
       state.category = action.payload.data;
     });
     builder.addCase(getMenuList.fulfilled, (state, action) => {
+      // console.log(action.payload, "payload");
       state.tableDataList = action.payload.data.responses;
       state.totalPageCount = action.payload.data.allCount;
+    });
+    builder.addCase(deleteMenuPostition.fulfilled, (state, action) => {
+      console.log(action.payload, "payload");
+      state.currentModal = null;
     });
     builder.addCase(setNewCategory.pending, (state, action) => {
       state.status = true;
@@ -95,25 +118,48 @@ export const dataSlice = createSlice({
       state.totalPageCount = action.payload.data.allCount;
     });
     builder.addCase(getBranch.fulfilled, (state, action) => {
+      console.log(action.payload, "данные о филиалах");
       state.tableDataList = action.payload.data.responses;
+      state.totalPageCount = action.payload.data.allCount;
     });
     builder.addCase(getOutStock.fulfilled, (state, action) => {
       state.tableDataList = action.payload.data.responses;
+      state.totalPageCount = action.payload.data.allCount;
     });
     builder.addCase(menuSearch.fulfilled, (state, action) => {
       state.tableDataList = action.payload.data.responses;
+      state.totalPageCount = action.payload.data.allCount;
     });
     builder.addCase(stockSearch.fulfilled, (state, action) => {
       state.tableDataList = action.payload.data.responses;
+      state.totalPageCount = action.payload.data.allCount;
     });
     builder.addCase(branchesSearch.fulfilled, (state, action) => {
       state.tableDataList = action.payload.data.responses;
+      state.totalPageCount = action.payload.data.allCount;
     });
     builder.addCase(getAllEmployers.fulfilled, (state, action) => {
       state.tableDataList = action.payload.data.responses;
+      state.totalPageCount = action.payload.data.allCount;
     });
     builder.addCase(employersSearch.fulfilled, (state, action) => {
       state.tableDataList = action.payload.data.responses;
+      state.totalPageCount = action.payload.data.allCount;
+    });
+    builder.addCase(setPosition.fulfilled, (state, action) => {
+      state.currentModal = null;
+    });
+    builder.addCase(setProduct.fulfilled, (state, action) => {
+      state.currentModal = null;
+    });
+    builder.addCase(setBranch.fulfilled, (state, action) => {
+      state.currentModal = null;
+    });
+    builder.addCase(setEmployer.fulfilled, (state, action) => {
+      state.currentModal = null;
+    });
+    builder.addCase(getFilialName.fulfilled, (state, action) => {
+      state.filialName = action.payload.data;
     });
   },
 });
@@ -128,5 +174,8 @@ export const {
   setFilter,
   setFilterValue,
   setSearch,
+  setTableDataList,
+  setModalTitle,
+  setDeleteType,
 } = dataSlice.actions;
 export default dataSlice.reducer;

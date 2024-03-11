@@ -2,12 +2,18 @@ import React, { useEffect, useRef, useState } from "react";
 import styles from "./SelectDropDown.module.css";
 import classnames from "classnames";
 import { icons } from "../../assets";
-import { useDispatch, useSelector } from "react-redux";
-import { setCategory } from "../../redux/slices/DataSlice";
+import { useDispatch } from "react-redux";
+
 import { getCategoryList } from "../../redux/actions/DataActions";
 
-const SelectDropDown = ({ name, inputType, selectList, change }) => {
-  console.log(selectList, "category");
+const SelectDropDown = ({
+  name,
+  inputType,
+  selectList,
+  change,
+  ingredientIndex,
+}) => {
+  // console.log(ingredientIndex, "полученный index");
   const dispatch = useDispatch();
   const rootRef = useRef();
   const [isOpenSelect, setIsOpenSelect] = useState(false);
@@ -21,7 +27,7 @@ const SelectDropDown = ({ name, inputType, selectList, change }) => {
   }, []);
 
   function handleChangeCategory(categoryName) {
-    change(categoryName);
+    change(categoryName, ingredientIndex);
     setIsOpenSelect(false);
   }
 
@@ -79,19 +85,18 @@ const SelectDropDown = ({ name, inputType, selectList, change }) => {
           <hr className={classnames(styles.line)} />
           {selectList?.map((select) => {
             return (
-              <>
-                <li
-                  value={select}
-                  onClick={() => handleChangeCategory(select)}
-                  className={classnames(
-                    styles.option_item,
-                    styles.flex,
-                    inputTypes[inputType]
-                  )}
-                >
-                  {select}
-                </li>
-              </>
+              <li
+                key={select}
+                value={select}
+                onClick={() => handleChangeCategory(select)}
+                className={classnames(
+                  styles.option_item,
+                  styles.flex,
+                  inputTypes[inputType]
+                )}
+              >
+                {select}
+              </li>
             );
           })}
         </ul>

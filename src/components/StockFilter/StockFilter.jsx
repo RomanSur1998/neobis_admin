@@ -13,6 +13,7 @@ const StockFilter = () => {
         {filter.map((elem) => {
           return (
             <FilterButton
+              key={elem.name}
               name={elem.name}
               end={elem?.end}
               active={elem.active}

@@ -7,6 +7,7 @@ const ModalButton = ({ buttonType, children, click, type, name }) => {
     outlined: styles.outlined,
     filled: styles.filled,
     darker: styles.darker,
+    color: styles.color,
   };
   return (
     <button

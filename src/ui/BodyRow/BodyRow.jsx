@@ -31,7 +31,7 @@ const BodyRow = ({ row }) => {
         return <td key={i}>{cell[1]}</td>;
       })}
       <td>
-        {isShowSelectAction && <SelectAction />}
+        {isShowSelectAction && <SelectAction elementData={row} />}
         <button
           className={styles.dotsBlock}
           onClick={() => setIsShowSelectAction((prev) => !prev)}

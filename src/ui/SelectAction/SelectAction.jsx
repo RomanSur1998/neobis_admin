@@ -3,15 +3,32 @@ import styles from "./SelectAction.module.css";
 import classnames from "classnames";
 import { icons } from "../../assets";
 import { useDispatch } from "react-redux";
-import { setCurrentModal } from "../../redux/slices/DataSlice";
+import {
+  setCurrentModal,
+  setDeleteType,
+  setModalTitle,
+  setProps,
+} from "../../redux/slices/DataSlice";
+import { useLocation } from "react-router-dom";
+import {
+  getCurrentModalName,
+  getDeleteTypes,
+} from "../../helpers/getCurrentModalName";
 
-const SelectAction = () => {
+const SelectAction = ({ elementData }) => {
+  console.log(elementData, "elementData");
+  const { pathname } = useLocation();
   const dispatch = useDispatch();
   function hadleOpenModal() {
-    dispatch(setCurrentModal("editPosition"));
+    dispatch(setCurrentModal(getCurrentModalName[pathname]));
+    dispatch(setModalTitle("Редактирование"));
+    dispatch(setProps(elementData));
   }
   function hadleOpenDeleteModal() {
     dispatch(setCurrentModal("deleteCategory"));
+    dispatch(setModalTitle("Удаление"));
+    dispatch(setDeleteType(getDeleteTypes[pathname]));
+    dispatch(setProps(elementData));
   }
 
   return (
