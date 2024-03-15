@@ -77,16 +77,28 @@ export const employerHeader = [
     id: 1,
   },
   {
-    header: "Название кофейни",
+    header: "Имя",
     id: 2,
+  },
+  {
+    header: "Логин",
+    id: 3,
   },
 
   {
-    header: "Адрес",
-    id: 4,
+    header: "Должность",
+    id: 5,
   },
   {
-    header: "Время работы",
-    id: 5,
+    header: "Филиал",
+    id: 6,
+  },
+  {
+    header: "Почта",
+    id: 7,
+  },
+  {
+    header: "График работы",
+    id: 8,
   },
 ];

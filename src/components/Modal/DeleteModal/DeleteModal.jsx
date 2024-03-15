@@ -8,6 +8,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCurrentModal } from "../../../redux/slices/DataSlice";
 import {
   deleteCategory,
+  deleteEmployer,
+  deleteFilial,
   deleteMenuPostition,
   deleteStockProduct,
 } from "../../../redux/actions/DataActions";
@@ -22,8 +24,12 @@ const DeleteModal = (props) => {
     deleteProduct: () => {
       dispatch(deleteStockProduct(props.id));
     },
-    deleteBrach: () => {},
-    deleteEmployer: () => {},
+    deleteBrach: () => {
+      dispatch(deleteFilial(props.id));
+    },
+    deleteEmployer: () => {
+      dispatch(deleteEmployer(props.email));
+    },
   };
   console.log(props, "props");
   const dispatch = useDispatch();

@@ -9,6 +9,7 @@ import GraphRow from "../../../ui/GraphRow/GraphRow";
 import SelectDropDown from "../../SelectDropDown/SelectDropDown";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  editEmployer,
   getCategoryList,
   getFilialName,
   setEmployer,
@@ -29,10 +30,10 @@ const NewEmployer = (props) => {
       password: props?.password || "",
       name: props?.name || "",
       position: props?.position || "",
-      birthday: props?.login || "",
+      birthday: props?.birthday || "",
       email: props?.email || "",
       branch: props?.branch || "",
-      workDays: [
+      workDays: props?.workDays || [
         { day: "Понедельник", checked: false, from: "", to: "" },
         { day: "Вторник", checked: false, from: "", to: "" },
         { day: "Среда", checked: false, from: "", to: "" },
@@ -43,11 +44,13 @@ const NewEmployer = (props) => {
       ],
     },
     onSubmit: (values) => {
-      dispatch(setEmployer(values));
+      if (props) {
+        dispatch(editEmployer({ data: values, id: props.id }));
+      } else {
+        dispatch(setEmployer(values));
+      }
     },
   });
-
-  console.log(props, "PROPS");
 
   useEffect(() => {
     dispatch(getFilialName());
@@ -74,6 +77,9 @@ const NewEmployer = (props) => {
   function handleFilialChange(branch) {
     formik.setFieldValue("branch", branch);
   }
+
+  console.log(props, "PROPS");
+  console.log(formik.values, "FORMIK");
   return (
     <BackgroundModal>
       <div className={classnames(styles.modal)}>

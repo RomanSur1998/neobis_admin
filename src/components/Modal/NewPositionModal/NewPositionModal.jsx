@@ -14,14 +14,18 @@ import {
   setTableDataList,
 } from "../../../redux/slices/DataSlice";
 import {
+  editMenuPosition,
   getCategoryList,
+  getMenuList,
   setPosition,
 } from "../../../redux/actions/DataActions";
 import { objectSample, units } from "../../../helpers/units";
 
 const NewPositionModal = (props) => {
   const dispatch = useDispatch();
-  const { category, tableDataList } = useSelector((state) => state.data);
+  const { category, tableDataList, pageNumber } = useSelector(
+    (state) => state.data
+  );
   console.log(tableDataList, "tableDataList");
 
   useEffect(() => {
@@ -76,11 +80,27 @@ const NewPositionModal = (props) => {
         file: formik.values.file,
         file_json: JSON.stringify(data),
       };
-
-      dispatch(setPosition(fromData));
+      if (props) {
+        dispatch(
+          editMenuPosition({
+            data: fromData,
+            id: props.id,
+            page: pageNumber,
+            dispatch,
+          })
+        );
+      } else {
+        dispatch(
+          setPosition({
+            data: fromData,
+            page: pageNumber,
+            dispatch,
+          })
+        );
+      }
     },
   });
-  console.log(formik.values, "formik");
+  console.log(props, "PROPS");
 
   const handleChageImage = (e) => {
     console.log(e.type, "type");
@@ -111,17 +131,17 @@ const NewPositionModal = (props) => {
   }
 
   function handleChahgeMesure(data, index) {
-    const ingredients = [...formik.values.ingridients];
+    const ingredients = structuredClone(formik.values.ingridients);
     ingredients[index].mesure = data;
     formik.setFieldValue("ingridients", ingredients);
   }
   function handleChahgeName(e, index) {
-    const ingredients = [...formik.values.ingridients];
+    const ingredients = structuredClone(formik.values.ingridients);
     ingredients[index].name = e.target.value;
     formik.setFieldValue("ingridients", ingredients);
   }
   function handleChahgeQuantity(e, index) {
-    const ingredients = [...formik.values.ingridients];
+    const ingredients = structuredClone(formik.values.ingridients);
     ingredients[index].quantity = e.target.value;
     formik.setFieldValue("ingridients", ingredients);
   }

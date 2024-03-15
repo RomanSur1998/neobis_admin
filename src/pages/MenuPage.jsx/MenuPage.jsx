@@ -10,7 +10,7 @@ const MenuPage = () => {
   const { tableDataList, pageNumber } = useSelector((state) => state.data);
 
   const dispatch = useDispatch();
-  console.log(changeTableData.menuTableData(tableDataList), "table data list");
+  console.log(tableDataList, "table data list ");
 
   useEffect(() => {
     dispatch(getMenuList(pageNumber));

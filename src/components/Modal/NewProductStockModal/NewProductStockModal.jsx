@@ -9,6 +9,7 @@ import SelectDropDown from "../../SelectDropDown/SelectDropDown";
 import { stockCategory, units } from "../../../helpers/units";
 import { useFormik } from "formik";
 import {
+  editStockProduct,
   getCategoryList,
   getFilialName,
   setProduct,
@@ -17,9 +18,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCurrentModal } from "../../../redux/slices/DataSlice";
 
 const NewProductStockModal = (props) => {
-  const { category, filialName } = useSelector((state) => state.data);
+  const { filialName, pageNumber, filterValue } = useSelector(
+    (state) => state.data
+  );
 
-  console.log(filialName, "filialName");
+  console.log(props, "PROPS");
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCategoryList());
@@ -35,10 +38,10 @@ const NewProductStockModal = (props) => {
       name: "" || props?.name,
       quantity: "" || props?.quantity,
       mesure: "мл" || props?.unit,
-      minLimit: "",
-      dateIn: "",
+      minLimit: "" || props?.minimalLimit,
+      dateIn: "" || props?.dateOfArrival,
       branch: "",
-      category: "",
+      category: "" || props?.category,
     },
     onSubmit: (values) => {
       const data = {
@@ -50,7 +53,13 @@ const NewProductStockModal = (props) => {
         unit: values.mesure,
       };
       console.log(values);
-      dispatch(setProduct(data));
+      if (props) {
+        dispatch(editStockProduct({ data: data, id: props.id }));
+      } else {
+        dispatch(
+          setProduct({ data: data, page: pageNumber, dispatch, filterValue })
+        );
+      }
     },
   });
 

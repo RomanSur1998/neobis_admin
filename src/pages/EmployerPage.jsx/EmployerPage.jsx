@@ -7,12 +7,12 @@ import { getAllEmployers } from "../../redux/actions/DataActions";
 import { changeTableData } from "../../helpers/table/changeTableData";
 
 const EmployerPage = () => {
-  const { tableDataList } = useSelector((state) => state.data);
+  const { tableDataList, pageNumber } = useSelector((state) => state.data);
   console.log(tableDataList, "employer");
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getAllEmployers());
-  }, []);
+    dispatch(getAllEmployers(pageNumber));
+  }, [pageNumber]);
 
   return (
     <>
