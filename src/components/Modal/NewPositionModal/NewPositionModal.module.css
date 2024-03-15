@@ -9,6 +9,13 @@
   margin: 40px;
   padding: 32px;
 }
+
+.image {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 10px;
+}
 .downloads_out {
   width: 100%;
   height: 208px;
@@ -83,6 +90,7 @@
   color: #5b7e9a;
   font-size: 20px;
   font-weight: 400;
+  gap: 8px;
 }
 .label_bold {
   font-size: 20px;
@@ -124,4 +132,7 @@
 .ex {
   width: 253px;
   justify-content: space-between;
+}
+.gaps {
+  gap: 20px;
 }

@@ -3,7 +3,11 @@ import styles from "./DropDownButton.module.css";
 import { icons } from "../../assets";
 import classnames from "classnames";
 import { useDispatch } from "react-redux";
-import { setCurrentModal, setProps } from "../../redux/slices/DataSlice";
+import {
+  setCurrentModal,
+  setModalTitle,
+  setProps,
+} from "../../redux/slices/DataSlice";
 
 const DropDownButton = ({ name }) => {
   const [isShow, setIsShow] = useState();
@@ -17,6 +21,7 @@ const DropDownButton = ({ name }) => {
   };
   function handleDelete(data) {
     dispatch(setCurrentModal("deleteCategory"));
+    dispatch(setModalTitle("Удаление"));
     dispatch(setProps(data));
   }
 

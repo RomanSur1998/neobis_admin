@@ -1,15 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Table from "../../components/Table/Table";
 import MainLayout from "../../layouts/MainLayout/MainLayout";
-import { branchBody, branchHeader } from "../../helpers/table/tableHeaders";
-import { useSelector } from "react-redux";
+import { branchHeader } from "../../helpers/table/tableHeaders";
+import { useDispatch, useSelector } from "react-redux";
+import { getBranch } from "../../redux/actions/DataActions";
+import { changeTableData } from "../../helpers/table/changeTableData";
 
 const BranchPage = () => {
+  const dispatch = useDispatch();
   const { tableDataList } = useSelector((state) => state.data);
+  console.log(tableDataList, "table data");
+
+  useEffect(() => {
+    dispatch(getBranch());
+  }, []);
+
   return (
     <>
       <MainLayout>
-        <Table headerList={branchHeader} bodyList={tableDataList} />
+        <Table
+          headerList={branchHeader}
+          bodyList={changeTableData.branchTableData(tableDataList)}
+        />
       </MainLayout>
     </>
   );

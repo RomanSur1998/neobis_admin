@@ -37,14 +37,17 @@ const NewCategoryModal = () => {
           className={classnames(styles.form, styles.flex)}
           onSubmit={formik.handleSubmit}
         >
-          <TextField
-            labelName={"Наименование"}
-            name={"categoryName"}
-            placeholder={"Введите название категории"}
-            change={formik.handleChange}
-            blur={formik.handleBlur}
-            value={formik.values.categoryName}
-          />
+          <label className={classnames(styles.label, styles.flex)}>
+            Наименование
+            <TextField
+              labelName={"Наименование"}
+              name={"categoryName"}
+              placeholder={"Введите название категории"}
+              change={formik.handleChange}
+              blur={formik.handleBlur}
+              value={formik.values.categoryName}
+            />
+          </label>
 
           <div className={classnames(styles.button_block, styles.flex)}>
             <ModalButton buttonType={"outlined"} click={handleClose}>

@@ -1,8 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./GraphRow.module.css";
 import classnames from "classnames";
+import InputMask from "react-input-mask";
 
-const GraphRow = ({ day }) => {
+const GraphRow = ({ day, checked, changeDay }) => {
+  const [openHour, setOpneHour] = useState("11:00");
+  const [closeHour, setCloseHour] = useState("22:00");
+
+  function handleSelect() {
+    if (openHour && closeHour) {
+      changeDay(day, openHour, closeHour);
+    }
+  }
+
   return (
     <div className={classnames(styles.flex, styles.container)}>
       <span className={classnames(styles.flex, styles.title)}>{day}</span>
@@ -11,8 +21,8 @@ const GraphRow = ({ day }) => {
         <input
           className={classnames(styles.checkbox)}
           type="checkbox"
-          name=""
-          id=""
+          checked={checked}
+          onChange={handleSelect}
         />
         <div className={classnames(styles.flex, styles.input_block)}>
           <input
@@ -20,14 +30,20 @@ const GraphRow = ({ day }) => {
             type="text"
             name=""
             id=""
-            value={"11"}
+            onChange={(e) => {
+              setOpneHour(e.target.value);
+            }}
+            value={openHour}
           />
           -
           <input
             className={classnames(styles.input)}
             type="text"
             name=""
-            value={"00"}
+            onChange={(e) => {
+              setCloseHour(e.target.value);
+            }}
+            value={closeHour}
           />
         </div>
       </div>

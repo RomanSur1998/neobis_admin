@@ -1,34 +1,25 @@
 import React, { useState } from "react";
 import styles from "./StockFilter.module.css";
 import classnames from "classnames";
+import FilterButton from "../../ui/FilterButton/FilterButton";
+import { useSelector } from "react-redux";
 
 const StockFilter = () => {
-  const [isActice, setIsActive] = useState(true);
+  const { filter } = useSelector((state) => state.data);
 
   return (
     <>
       <div className={styles.container}>
-        <button
-          className={classnames(styles.button, {
-            [styles.active_btn]: true,
-          })}
-        >
-          Готовая продукция
-        </button>
-        <button
-          className={classnames(styles.button, {
-            [styles.active_btn]: false,
-          })}
-        >
-          Сырье{" "}
-        </button>
-        <button
-          className={classnames(styles.button, styles.end, {
-            [styles.end_active]: true,
-          })}
-        >
-          Заканчивающиеся продукты{" "}
-        </button>
+        {filter.map((elem) => {
+          return (
+            <FilterButton
+              key={elem.name}
+              name={elem.name}
+              end={elem?.end}
+              active={elem.active}
+            />
+          );
+        })}
       </div>
       <hr />
     </>

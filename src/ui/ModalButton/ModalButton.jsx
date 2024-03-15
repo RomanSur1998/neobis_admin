@@ -7,11 +7,12 @@ const ModalButton = ({ buttonType, children, click, type, name }) => {
     outlined: styles.outlined,
     filled: styles.filled,
     darker: styles.darker,
+    color: styles.color,
   };
   return (
     <button
       name={name ? name : null}
-      type={type ? type : "buttton"}
+      type={type ? type : "button"}
       className={classnames(styles.button, btnTypes[buttonType])}
       onClick={click ? click : null}
     >

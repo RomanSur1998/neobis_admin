@@ -4,6 +4,7 @@ import { icons } from "../../assets";
 import { navigateName } from "../../routes/routesHelpers";
 import { NavLink, useLocation } from "react-router-dom";
 import classnames from "classnames";
+import { outOffApp } from "../../helpers/outOffApp";
 
 const SideBar = () => {
   const { pathname } = useLocation();
@@ -30,7 +31,13 @@ const SideBar = () => {
         })}
       </div>
       <div className={styles.outButton}>
-        <NavLink to={""} className={styles.button}>
+        <NavLink
+          to={"/"}
+          className={styles.button}
+          onClick={() => {
+            outOffApp();
+          }}
+        >
           <img src={icons.out_icon} alt="" />
           Выход
         </NavLink>{" "}

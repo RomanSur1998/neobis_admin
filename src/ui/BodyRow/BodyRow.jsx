@@ -27,11 +27,11 @@ const BodyRow = ({ row }) => {
   }, [isShowSelectAction]);
   return (
     <tr>
-      {row?.map((cell, i) => {
-        return <td key={i}>{cell}</td>;
+      {row.dataList?.map((cell, i) => {
+        return <td key={i}>{cell[1]}</td>;
       })}
       <td>
-        {isShowSelectAction && <SelectAction />}
+        {isShowSelectAction && <SelectAction elementData={row} />}
         <button
           className={styles.dotsBlock}
           onClick={() => setIsShowSelectAction((prev) => !prev)}

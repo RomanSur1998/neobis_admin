@@ -19,24 +19,38 @@ export const api = {
   getCategoryList: async () => {
     try {
       const response = await configAxios.get("/api/v1/category/all");
+
       return response;
     } catch (error) {
       return error.response;
     }
   },
+  // ! Работа с меню
   getMenu: async (pageNumber) => {
     try {
       const response = await configAxios.get(
-        `/api/v1/menu/all?number=${pageNumber}&size=5`
+        `/api/v1/menu/all?number=${pageNumber}&size=6`
       );
+      console.log(response);
+
       return response;
     } catch (error) {
+      return error;
+    }
+  },
+  deleteMenuPostition: async (id) => {
+    try {
+      const response = await configAxios.delete(`/api/v1/menu?id=${id}`);
+      return response;
+    } catch (error) {
+      console.log(error, "delete menu");
       return error;
     }
   },
   setNewCategory: async (data) => {
     try {
       const response = await configAxios.post("/api/v1/category/add", data);
+      console.log(response);
       return response;
     } catch (error) {
       console.log(error);
@@ -44,11 +58,188 @@ export const api = {
     }
   },
   deleteCategory: async (data) => {
+    const newData = {
+      name: data,
+    };
     try {
+      console.log(newData);
       const response = await configAxios.delete(
-        "/api/v1/category/delete",
-        data
+        `/api/v1/category/delete/${data}`
       );
+      return response;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+  },
+
+  getStockList: async (data, pageNumber) => {
+    try {
+      const response = await configAxios.get(
+        `/api/v1/warehouse/category/${data}?number=${pageNumber}&size=5`,
+        { text: data }
+      );
+      return response;
+    } catch (error) {
+      console.log(error, "stock error");
+      return error;
+    }
+  },
+  getOutStock: async () => {
+    try {
+      const response = await configAxios.get(
+        "/api/v1/warehouse/out-stock?number=1&size=6"
+      );
+
+      return response;
+    } catch (error) {
+      console.log(error, "out stock");
+      return error;
+    }
+  },
+
+  deleteStockProduct: async (data) => {
+    try {
+      const response = await configAxios.delete(`/api/v1/warehouse/${data}`);
+      return response;
+    } catch (error) {
+      console.log(error, "delete menu");
+      return error;
+    }
+  },
+
+  getBranch: async () => {
+    try {
+      const response = await configAxios.get(
+        "/api/v1/filial/all?number=1&size=5"
+      );
+      return response;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+  },
+
+  menuSearch: async (data) => {
+    try {
+      const response = await configAxios.get(
+        `/api/v1/menu/find-by-name/${data}?number=1&size=5`
+      );
+      console.log(response, "search");
+      return response;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+  },
+  stockSearch: async (data) => {
+    try {
+      const response = await configAxios.get(
+        `/api/v1/warehouse/find/${data}?number=1&size=5`
+      );
+      return response;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+  },
+  branchesSearch: async (data) => {
+    try {
+      const response = await configAxios.get(
+        `/api/v1/warehouse/find/${data}?number=1&size=5`
+      );
+      return response;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+  },
+
+  getAllEmployers: async () => {
+    try {
+      const response = await configAxios.get(
+        `/api/v1/stuff/all?number=1&size=5`
+      );
+      return response;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+  },
+
+  employersSearch: async (data) => {
+    try {
+      const response = await configAxios.get(
+        `/api/v1/stuff/find/${data}?number=1&size=5`
+      );
+      return response;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+  },
+  setPosition: async (formData) => {
+    try {
+      const response = await configAxios.post("/api/v1/menu", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      return response;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+  },
+  setProduct: async (data) => {
+    try {
+      const response = await configAxios.post("/api/v1/warehouse", data);
+      return response;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+  },
+  setBranch: async (data) => {
+    try {
+      const response = await configAxios.post("/api/v1/filial/save", data);
+      return response;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+  },
+  setEmployer: async (data) => {
+    try {
+      const response = await configAxios.post("/api/v1/stuff/save", data);
+      console.log(response, "STUFF SAVE");
+      return response;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+  },
+  getFilialName: async () => {
+    try {
+      const response = await configAxios.get("/api/v1/filial/all-names");
+      return response;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+  },
+  deleteFilial: async () => {
+    try {
+      const response = await configAxios.delete("/api/v1/filial/all-names");
+      return response;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+  },
+  deleteEmployer: async (data) => {
+    try {
+      const response = await configAxios.delete(`/api/v1/stuff/delete/${data}`);
       return response;
     } catch (error) {
       console.log(error);

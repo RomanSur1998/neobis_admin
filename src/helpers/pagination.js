@@ -4,5 +4,5 @@ export function getPage(totalCount, countElement) {
   for (let i = 1; i <= newCount; i++) {
     array.push(i);
   }
-  return array;
+  return array.length !== 0 ? array : [1];
 }
