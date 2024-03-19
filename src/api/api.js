@@ -5,7 +5,7 @@ export const api = {
   authorization: async (data, navigate) => {
     try {
       const response = await configAxios.post("/api/v1/auth/admin-login", data);
-      console.log(response, "запрос прошел упешно");
+
       if (response.status === 200) {
         Cookies.set("accessToken", response.data.accessToken);
         Cookies.set("refreshToken", response.data.refreshToken, { expires: 1 });
@@ -13,7 +13,7 @@ export const api = {
       }
       return response;
     } catch (error) {
-      return error.response;
+      throw error;
     }
   },
   getCategoryList: async () => {
@@ -108,10 +108,10 @@ export const api = {
     }
   },
 
-  getBranch: async () => {
+  getBranch: async (page) => {
     try {
       const response = await configAxios.get(
-        "/api/v1/filial/all?number=1&size=5"
+        `/api/v1/filial/all?number=${page}&size=5`
       );
       console.log(response, "get Branch");
       return response;

@@ -9,11 +9,12 @@ import HeaderModals from "../../../ui/HeaderModals/HeaderModals";
 import { icons } from "../../../assets";
 import GraphRow from "../../../ui/GraphRow/GraphRow";
 import { setCurrentModal } from "../../../redux/slices/DataSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
 import { editFilial, setBranch } from "../../../redux/actions/DataActions";
 
 const BranchModal = (props) => {
+  const { pageNumber } = useSelector((state) => state.data);
   const dispatch = useDispatch();
   function handleClose() {
     dispatch(setCurrentModal(null));
@@ -51,13 +52,20 @@ const BranchModal = (props) => {
         file_json: JSON.stringify(data),
       };
       if (props) {
-        dispatch(editFilial({ data: formData, id: props.id }));
+        dispatch(
+          editFilial({
+            data: formData,
+            id: props.id,
+            page: pageNumber,
+            dispatch,
+          })
+        );
       } else {
-        dispatch(setBranch(formData));
+        dispatch(setBranch({ data: formData, page: pageNumber, dispatch }));
       }
     },
   });
-  console.log(props, "PROPS");
+  console.log(pageNumber, "PROPS");
   function hendleSelectDay(dayName, start, end) {
     let days = formik.values?.workDays?.map((elem) => {
       if (dayName === elem.day) {
@@ -254,7 +262,6 @@ const BranchModal = (props) => {
               Отменa
             </ModalButton>
             <ModalButton buttonType={"filled"} type={"submit"}>
-              {" "}
               Добавить
             </ModalButton>
           </div>

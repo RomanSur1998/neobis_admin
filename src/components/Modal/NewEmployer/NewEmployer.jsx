@@ -18,7 +18,7 @@ import { useFormik } from "formik";
 import { positon } from "../../../helpers/units";
 import { setCurrentModal } from "../../../redux/slices/DataSlice";
 const NewEmployer = (props) => {
-  const { filialName } = useSelector((state) => state.data);
+  const { filialName, pageNumber } = useSelector((state) => state.data);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCategoryList());
@@ -45,9 +45,16 @@ const NewEmployer = (props) => {
     },
     onSubmit: (values) => {
       if (props) {
-        dispatch(editEmployer({ data: values, id: props.id }));
+        dispatch(
+          editEmployer({
+            data: values,
+            id: props.id,
+            page: pageNumber,
+            dispatch,
+          })
+        );
       } else {
-        dispatch(setEmployer(values));
+        dispatch(setEmployer({ data: values, page: pageNumber, dispatch }));
       }
     },
   });

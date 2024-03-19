@@ -61,9 +61,10 @@ export const getOutStock = createAsyncThunk(
     }
   }
 );
-export const getBranch = createAsyncThunk("data/getBranch", async () => {
+export const getBranch = createAsyncThunk("data/getBranch", async (page) => {
   try {
-    const response = await api.getBranch();
+    console.log(page, "page");
+    const response = await api.getBranch(page);
     return response;
   } catch (error) {
     return error;
@@ -149,9 +150,10 @@ export const setProduct = createAsyncThunk(
 );
 export const setBranch = createAsyncThunk(
   "data/setBranch",
-  async (formData) => {
+  async ({ data, page, dispatch }) => {
     try {
-      const response = await api.setBranch(formData);
+      const response = await api.setBranch(data);
+      dispatch(getBranch(page));
       return response;
     } catch (error) {
       return error;
@@ -160,9 +162,10 @@ export const setBranch = createAsyncThunk(
 );
 export const setEmployer = createAsyncThunk(
   "data/setEmployer",
-  async (data) => {
+  async ({ data, page, dispatch }) => {
     try {
       const response = await api.setEmployer(data);
+      dispatch(getAllEmployers(page));
       return response;
     } catch (error) {
       return error;
@@ -275,10 +278,11 @@ export const editStockProduct = createAsyncThunk(
 
 export const editFilial = createAsyncThunk(
   "data/editFilial",
-  async ({ data, id }) => {
+  async ({ data, id, page, dispatch }) => {
     try {
       console.log(data, "data");
       const response = await api.editFilial(data, id);
+      dispatch(getBranch(page));
       return response;
     } catch (error) {
       return error;
@@ -288,10 +292,11 @@ export const editFilial = createAsyncThunk(
 
 export const editEmployer = createAsyncThunk(
   "data/editEmployer",
-  async ({ data, id }) => {
+  async ({ data, id, page, dispatch }) => {
     try {
       console.log(data, "data");
       const response = await api.editEmployer(data, id);
+      dispatch(getAllEmployers(page));
       return response;
     } catch (error) {
       return error;

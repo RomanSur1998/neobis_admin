@@ -3,11 +3,13 @@ import styles from "./SideBar.module.css";
 import { icons } from "../../assets";
 import { navigateName } from "../../routes/routesHelpers";
 import { NavLink, useLocation } from "react-router-dom";
-import classnames from "classnames";
 import { outOffApp } from "../../helpers/outOffApp";
+import { useDispatch } from "react-redux";
+import { setCurrentModal, setModalTitle } from "../../redux/slices/DataSlice";
 
 const SideBar = () => {
   const { pathname } = useLocation();
+  const dispatch = useDispatch();
 
   return (
     <nav className={styles.sideBar}>
@@ -32,10 +34,12 @@ const SideBar = () => {
       </div>
       <div className={styles.outButton}>
         <NavLink
-          to={"/"}
+          // to={"/"}
           className={styles.button}
           onClick={() => {
-            outOffApp();
+            // outOffApp();
+            dispatch(setCurrentModal("outModal"));
+            dispatch(setModalTitle("Выход"));
           }}
         >
           <img src={icons.out_icon} alt="" />

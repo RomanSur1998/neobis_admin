@@ -8,11 +8,11 @@ import { changeTableData } from "../../helpers/table/changeTableData";
 
 const BranchPage = () => {
   const dispatch = useDispatch();
-  const { tableDataList } = useSelector((state) => state.data);
+  const { tableDataList, pageNumber } = useSelector((state) => state.data);
   console.log(tableDataList, "table data");
 
   useEffect(() => {
-    dispatch(getBranch());
+    dispatch(getBranch(pageNumber));
   }, []);
 
   return (

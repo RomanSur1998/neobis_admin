@@ -7,11 +7,13 @@ import LogoHeader from "../LogoHeader/LogoHeader";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { validationShemas } from "../../helpers/validationShemas";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { authUser } from "../../redux/actions/UserActions";
 import { useNavigate } from "react-router-dom";
 
-const SignInForm = (error = false) => {
+const SignInForm = () => {
+  const { error } = useSelector((state) => state.user);
+  console.log(error, "Error auth");
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const formik = useFormik({

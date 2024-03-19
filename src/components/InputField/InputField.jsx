@@ -11,7 +11,7 @@ const InputField = ({ type, name, onChange, onBlur, placeholder, error }) => {
       name={name}
       className={styles.input}
       placeholder={placeholder}
-      style={getStyles.getErrorInput((error = false))}
+      style={getStyles.getErrorInput(error)}
     />
   );
 };

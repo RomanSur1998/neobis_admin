@@ -3,13 +3,12 @@ import { api } from "../../api/api";
 
 export const authUser = createAsyncThunk(
   "user/authUser",
-  async ({ data, navigate }, thunkAPI) => {
+  async ({ data, navigate }) => {
     try {
       const response = await api.authorization(data, navigate);
-
       return response;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error);
+      return rejectWithValue(error);
     }
   }
 );

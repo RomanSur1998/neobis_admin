@@ -8,7 +8,18 @@ const MyPagination = () => {
   const { totalPageCount, pageNumber } = useSelector((state) => state.data);
   const dispatch = useDispatch();
   const pageNumbers = getPage(totalPageCount, 5);
-  console.log(pageNumber);
+  console.log(pageNumbers, "PAGE NUMBERS");
+
+  function nextPage() {
+    if (pageNumber < pageNumbers.length) {
+      dispatch(setPageNumber(pageNumber + 1));
+    }
+  }
+  function prevPage() {
+    if (pageNumber > 1) {
+      dispatch(setPageNumber(pageNumber - 1));
+    }
+  }
 
   return (
     <div className={styles.paginationContainer}>
@@ -22,7 +33,7 @@ const MyPagination = () => {
               }
             : null
         }
-        onClick={() => dispatch(setPageNumber(pageNumber - 1))}
+        onClick={prevPage}
       >
         {"<"}
       </button>
@@ -44,7 +55,7 @@ const MyPagination = () => {
         </button>
       ))}
       <button
-        onClick={() => dispatch(setPageNumber(pageNumber + 1))}
+        onClick={nextPage}
         style={
           pageNumber !== pageNumbers[pageNumbers.length - 1]
             ? {

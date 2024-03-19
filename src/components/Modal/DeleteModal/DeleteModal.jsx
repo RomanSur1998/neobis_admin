@@ -16,10 +16,13 @@ import {
 
 const DeleteModal = (props) => {
   console.log(props.id, "props");
+
+  const dispatch = useDispatch();
   const { deleteType } = useSelector((state) => state.data);
   const deleteTypes = {
     deletePosition: () => {
       dispatch(deleteMenuPostition(props.id));
+      // dispatch(deleteMenu(props.id));
     },
     deleteProduct: () => {
       dispatch(deleteStockProduct(props.id));
@@ -32,7 +35,7 @@ const DeleteModal = (props) => {
     },
   };
   console.log(props, "props");
-  const dispatch = useDispatch();
+
   function handleClose() {
     dispatch(setCurrentModal(null));
   }
@@ -57,7 +60,6 @@ const DeleteModal = (props) => {
             Отменa
           </ModalButton>
           <ModalButton buttonType={"filled"} click={handleDeleteCategory}>
-            {" "}
             Удалить
           </ModalButton>
         </div>

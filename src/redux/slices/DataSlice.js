@@ -95,6 +95,13 @@ export const dataSlice = createSlice({
     setDeleteType(state, action) {
       state.deleteType = action.payload;
     },
+    // deleteMenu(state, action) {
+    //   state.tableDataList = state.filter((elem) => {
+    //     if (elem.id !== action.payload) {
+    //       return elem;
+    //     }
+    //   });
+    // },
   },
   extraReducers: (builder) => {
     builder.addCase(getCategoryList.fulfilled, (state, action) => {
@@ -202,5 +209,6 @@ export const {
   setTableDataList,
   setModalTitle,
   setDeleteType,
+  // deleteMenu,
 } = dataSlice.actions;
 export default dataSlice.reducer;
