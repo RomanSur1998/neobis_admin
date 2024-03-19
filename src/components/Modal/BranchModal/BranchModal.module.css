@@ -102,3 +102,9 @@
   flex-direction: column;
   gap: 16px;
 }
+.image {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 10px;
+}

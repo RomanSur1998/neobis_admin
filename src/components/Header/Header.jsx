@@ -4,6 +4,7 @@ import { icons } from "../../assets";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setCurrentModal,
+  setFilterValue,
   setModalTitle,
   setPageNumber,
   setSearch,

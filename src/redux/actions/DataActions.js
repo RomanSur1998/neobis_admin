@@ -61,9 +61,10 @@ export const getOutStock = createAsyncThunk(
     }
   }
 );
-export const getBranch = createAsyncThunk("data/getBranch", async () => {
+export const getBranch = createAsyncThunk("data/getBranch", async (page) => {
   try {
-    const response = await api.getBranch();
+    console.log(page, "page");
+    const response = await api.getBranch(page);
     return response;
   } catch (error) {
     return error;
@@ -102,9 +103,9 @@ export const branchesSearch = createAsyncThunk(
 );
 export const getAllEmployers = createAsyncThunk(
   "data/getAllEmployers",
-  async () => {
+  async (page) => {
     try {
-      const response = await api.getAllEmployers();
+      const response = await api.getAllEmployers(page);
       return response;
     } catch (error) {
       console.log(error, "employer all");
@@ -125,36 +126,46 @@ export const employersSearch = createAsyncThunk(
 );
 export const setPosition = createAsyncThunk(
   "data/setPosition",
-  async (data) => {
+  async ({ data, page, dispatch }) => {
     try {
       const response = await api.setPosition(data);
+      dispatch(getMenuList(page));
       return response;
     } catch (error) {
       return error;
     }
   }
 );
-export const setProduct = createAsyncThunk("data/setProduct", async (data) => {
-  try {
-    const response = await api.setProduct(data);
-    return response;
-  } catch (error) {
-    return error;
+export const setProduct = createAsyncThunk(
+  "data/setProduct",
+  async ({ data, page, dispatch, filterValue }) => {
+    try {
+      const response = await api.setProduct(data);
+      dispatch(getStockList({ data: filterValue, pageNumber: page }));
+      return response;
+    } catch (error) {
+      return error;
+    }
   }
-});
-export const setBranch = createAsyncThunk("data/setBranch", async (data) => {
-  try {
-    const response = await api.setBranch(data);
-    return response;
-  } catch (error) {
-    return error;
+);
+export const setBranch = createAsyncThunk(
+  "data/setBranch",
+  async ({ data, page, dispatch }) => {
+    try {
+      const response = await api.setBranch(data);
+      dispatch(getBranch(page));
+      return response;
+    } catch (error) {
+      return error;
+    }
   }
-});
+);
 export const setEmployer = createAsyncThunk(
   "data/setEmployer",
-  async (data) => {
+  async ({ data, page, dispatch }) => {
     try {
       const response = await api.setEmployer(data);
+      dispatch(getAllEmployers(page));
       return response;
     } catch (error) {
       return error;
@@ -188,9 +199,9 @@ export const deleteMenuPostition = createAsyncThunk(
 );
 export const deleteFilial = createAsyncThunk(
   "data/deleteFilial",
-  async (data) => {
+  async (id) => {
     try {
-      const response = api.deleteFilial(data);
+      const response = api.deleteFilial(id);
       return response;
     } catch (error) {
       console.log(error);
@@ -237,3 +248,59 @@ export const deleteCategory = createAsyncThunk(
 );
 
 // ! DELETE
+
+// ? EDIT
+export const editMenuPosition = createAsyncThunk(
+  "data/editMenuPosition",
+  async ({ data, id, page, dispatch }) => {
+    try {
+      console.log(data, "data");
+      const response = await api.editMenuPosition(data, id);
+      dispatch(getMenuList(page));
+      return response;
+    } catch (error) {
+      return error;
+    }
+  }
+);
+export const editStockProduct = createAsyncThunk(
+  "data/editStockProduct",
+  async ({ data, id }) => {
+    try {
+      console.log(data, "data");
+      const response = await api.editStockProduct(data, id);
+      return response;
+    } catch (error) {
+      return error;
+    }
+  }
+);
+
+export const editFilial = createAsyncThunk(
+  "data/editFilial",
+  async ({ data, id, page, dispatch }) => {
+    try {
+      console.log(data, "data");
+      const response = await api.editFilial(data, id);
+      dispatch(getBranch(page));
+      return response;
+    } catch (error) {
+      return error;
+    }
+  }
+);
+
+export const editEmployer = createAsyncThunk(
+  "data/editEmployer",
+  async ({ data, id, page, dispatch }) => {
+    try {
+      console.log(data, "data");
+      const response = await api.editEmployer(data, id);
+      dispatch(getAllEmployers(page));
+      return response;
+    } catch (error) {
+      return error;
+    }
+  }
+);
+// ? EDIT

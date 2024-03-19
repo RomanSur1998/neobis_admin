@@ -9,6 +9,7 @@ import GraphRow from "../../../ui/GraphRow/GraphRow";
 import SelectDropDown from "../../SelectDropDown/SelectDropDown";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  editEmployer,
   getCategoryList,
   getFilialName,
   setEmployer,
@@ -17,7 +18,7 @@ import { useFormik } from "formik";
 import { positon } from "../../../helpers/units";
 import { setCurrentModal } from "../../../redux/slices/DataSlice";
 const NewEmployer = (props) => {
-  const { filialName } = useSelector((state) => state.data);
+  const { filialName, pageNumber } = useSelector((state) => state.data);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCategoryList());
@@ -29,10 +30,10 @@ const NewEmployer = (props) => {
       password: props?.password || "",
       name: props?.name || "",
       position: props?.position || "",
-      birthday: props?.login || "",
+      birthday: props?.birthday || "",
       email: props?.email || "",
       branch: props?.branch || "",
-      workDays: [
+      workDays: props?.workDays || [
         { day: "Понедельник", checked: false, from: "", to: "" },
         { day: "Вторник", checked: false, from: "", to: "" },
         { day: "Среда", checked: false, from: "", to: "" },
@@ -43,11 +44,20 @@ const NewEmployer = (props) => {
       ],
     },
     onSubmit: (values) => {
-      dispatch(setEmployer(values));
+      if (props) {
+        dispatch(
+          editEmployer({
+            data: values,
+            id: props.id,
+            page: pageNumber,
+            dispatch,
+          })
+        );
+      } else {
+        dispatch(setEmployer({ data: values, page: pageNumber, dispatch }));
+      }
     },
   });
-
-  console.log(props, "PROPS");
 
   useEffect(() => {
     dispatch(getFilialName());
@@ -74,6 +84,9 @@ const NewEmployer = (props) => {
   function handleFilialChange(branch) {
     formik.setFieldValue("branch", branch);
   }
+
+  console.log(props, "PROPS");
+  console.log(formik.values, "FORMIK");
   return (
     <BackgroundModal>
       <div className={classnames(styles.modal)}>

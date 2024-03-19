@@ -2,7 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 import {
   branchesSearch,
   deleteCategory,
+  deleteEmployer,
+  deleteFilial,
   deleteMenuPostition,
+  editEmployer,
+  editFilial,
+  editMenuPosition,
+  editStockProduct,
   employersSearch,
   getAllEmployers,
   getBranch,
@@ -89,6 +95,13 @@ export const dataSlice = createSlice({
     setDeleteType(state, action) {
       state.deleteType = action.payload;
     },
+    // deleteMenu(state, action) {
+    //   state.tableDataList = state.filter((elem) => {
+    //     if (elem.id !== action.payload) {
+    //       return elem;
+    //     }
+    //   });
+    // },
   },
   extraReducers: (builder) => {
     builder.addCase(getCategoryList.fulfilled, (state, action) => {
@@ -114,6 +127,7 @@ export const dataSlice = createSlice({
       state.currentModal = null;
     });
     builder.addCase(getStockList.fulfilled, (state, action) => {
+      console.log(action.payload, "action payload");
       state.tableDataList = action.payload.data.responses;
       state.totalPageCount = action.payload.data.allCount;
     });
@@ -161,6 +175,24 @@ export const dataSlice = createSlice({
     builder.addCase(getFilialName.fulfilled, (state, action) => {
       state.filialName = action.payload.data;
     });
+    builder.addCase(deleteEmployer.fulfilled, (state, action) => {
+      state.currentModal = null;
+    });
+    builder.addCase(deleteFilial.fulfilled, (state, action) => {
+      state.currentModal = null;
+    });
+    builder.addCase(editEmployer.fulfilled, (state, action) => {
+      state.currentModal = null;
+    });
+    builder.addCase(editStockProduct.fulfilled, (state, action) => {
+      state.currentModal = null;
+    });
+    builder.addCase(editMenuPosition.fulfilled, (state, action) => {
+      state.currentModal = null;
+    });
+    builder.addCase(editFilial.fulfilled, (state, action) => {
+      state.currentModal = null;
+    });
   },
 });
 
@@ -177,5 +209,6 @@ export const {
   setTableDataList,
   setModalTitle,
   setDeleteType,
+  // deleteMenu,
 } = dataSlice.actions;
 export default dataSlice.reducer;

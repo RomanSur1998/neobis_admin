@@ -5,7 +5,7 @@ export const api = {
   authorization: async (data, navigate) => {
     try {
       const response = await configAxios.post("/api/v1/auth/admin-login", data);
-      console.log(response, "запрос прошел упешно");
+
       if (response.status === 200) {
         Cookies.set("accessToken", response.data.accessToken);
         Cookies.set("refreshToken", response.data.refreshToken, { expires: 1 });
@@ -13,7 +13,7 @@ export const api = {
       }
       return response;
     } catch (error) {
-      return error.response;
+      throw error;
     }
   },
   getCategoryList: async () => {
@@ -29,7 +29,7 @@ export const api = {
   getMenu: async (pageNumber) => {
     try {
       const response = await configAxios.get(
-        `/api/v1/menu/all?number=${pageNumber}&size=6`
+        `/api/v1/menu/all?number=${pageNumber}&size=5`
       );
       console.log(response);
 
@@ -108,11 +108,12 @@ export const api = {
     }
   },
 
-  getBranch: async () => {
+  getBranch: async (page) => {
     try {
       const response = await configAxios.get(
-        "/api/v1/filial/all?number=1&size=5"
+        `/api/v1/filial/all?number=${page}&size=5`
       );
+      console.log(response, "get Branch");
       return response;
     } catch (error) {
       console.log(error);
@@ -146,7 +147,7 @@ export const api = {
   branchesSearch: async (data) => {
     try {
       const response = await configAxios.get(
-        `/api/v1/warehouse/find/${data}?number=1&size=5`
+        `/api/v1/filial/find/${data}?number=1&size=5`
       );
       return response;
     } catch (error) {
@@ -155,10 +156,10 @@ export const api = {
     }
   },
 
-  getAllEmployers: async () => {
+  getAllEmployers: async (page) => {
     try {
       const response = await configAxios.get(
-        `/api/v1/stuff/all?number=1&size=5`
+        `/api/v1/stuff/all?number=${page}&size=5`
       );
       return response;
     } catch (error) {
@@ -200,9 +201,13 @@ export const api = {
       return error;
     }
   },
-  setBranch: async (data) => {
+  setBranch: async (formData) => {
     try {
-      const response = await configAxios.post("/api/v1/filial/save", data);
+      const response = await configAxios.post("/api/v1/filial/save", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
       return response;
     } catch (error) {
       console.log(error);
@@ -228,9 +233,9 @@ export const api = {
       return error;
     }
   },
-  deleteFilial: async () => {
+  deleteFilial: async (id) => {
     try {
-      const response = await configAxios.delete("/api/v1/filial/all-names");
+      const response = await configAxios.delete(`/api/v1/filial/delete/${id}`);
       return response;
     } catch (error) {
       console.log(error);
@@ -240,6 +245,66 @@ export const api = {
   deleteEmployer: async (data) => {
     try {
       const response = await configAxios.delete(`/api/v1/stuff/delete/${data}`);
+      return response;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+  },
+
+  editMenuPosition: async (formData, id) => {
+    try {
+      const response = await configAxios.put(
+        `/api/v1/menu/update/${id}`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      console.log(response, "edit postion");
+      return response;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+  },
+  editStockProduct: async (formData, id) => {
+    try {
+      const response = await configAxios.put(
+        `/api/v1/warehouse/update/${id}`,
+        formData
+      );
+      return response;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+  },
+  editFilial: async (formData, id) => {
+    try {
+      const response = await configAxios.put(
+        `/api/v1/filial/update/${id}`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      return response;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
+  },
+  editEmployer: async (data, id) => {
+    try {
+      const response = await configAxios.put(
+        `/api/v1/stuff/update/${id}`,
+        data
+      );
       return response;
     } catch (error) {
       console.log(error);

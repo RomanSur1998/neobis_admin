@@ -3,3 +3,7 @@
   border: none;
   cursor: pointer;
 }
+
+.active {
+  cursor: pointer;
+}

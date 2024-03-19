@@ -6,12 +6,13 @@ const initialState = {
   password: "",
   statusbar: false,
   accessToken: null,
+  error: false,
 };
 export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    setEmail(actions, payload) {},
+    // setEmail(actions, payload) {},
     setAccessToken(state, action) {
       state.accessToken = action.payload;
     },
@@ -24,6 +25,10 @@ export const userSlice = createSlice({
       state.statusbar = false;
       console.log(actions.payload, "payload");
       state.accessToken = actions.payload.data.accessToken;
+    });
+    builder.addCase(authUser.rejected, (state, actions) => {
+      state.error = true;
+      console.error("Ошибка авторизации:"); // Логируем данные ошибки
     });
   },
 });
