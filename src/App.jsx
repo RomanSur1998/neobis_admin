@@ -8,7 +8,6 @@ const App = () => {
   return (
     <div>
       <MainRoutes />
-
       {currentModal ? <Modals /> : null}
     </div>
   );

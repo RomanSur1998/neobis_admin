@@ -18,20 +18,28 @@ const DeleteModal = (props) => {
   console.log(props.id, "props");
 
   const dispatch = useDispatch();
-  const { deleteType } = useSelector((state) => state.data);
+  const { deleteType, pageNumber, filterValue } = useSelector(
+    (state) => state.data
+  );
   const deleteTypes = {
     deletePosition: () => {
-      dispatch(deleteMenuPostition(props.id));
-      // dispatch(deleteMenu(props.id));
+      // dispatch(deleteMenuPostition(props.id));
+      dispatch(
+        deleteMenuPostition({ id: props.id, dispatch, page: pageNumber })
+      );
     },
     deleteProduct: () => {
-      dispatch(deleteStockProduct(props.id));
+      dispatch(
+        deleteStockProduct({ id: props.id, dispatch, pageNumber, filterValue })
+      );
     },
     deleteBrach: () => {
-      dispatch(deleteFilial(props.id));
+      dispatch(deleteFilial({ id: props.id, dispatch, page: pageNumber }));
     },
     deleteEmployer: () => {
-      dispatch(deleteEmployer(props.email));
+      dispatch(
+        deleteEmployer({ data: props.email, dispatch, page: pageNumber })
+      );
     },
   };
   console.log(props, "props");

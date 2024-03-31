@@ -5,10 +5,11 @@ import axios from "axios";
 import { BASE_ROUT_COLLECTION, PRIVATE_ROUT_COLLECTION } from "./routes";
 import { useDispatch, useSelector } from "react-redux";
 import { setAccessToken } from "../redux/slices/UserSlice";
-import { api } from "../api/api";
+// import { api } from "../api/api";
 
 const MainRoutes = () => {
-  const { accessToken = true } = useSelector((state) => state.user);
+  const { accessToken } = useSelector((state) => state.user);
+
   const dispatch = useDispatch();
 
   useEffect(() => {

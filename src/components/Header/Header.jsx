@@ -23,7 +23,7 @@ const Header = () => {
   const { search } = useSelector((state) => state.data);
   const dispatch = useDispatch();
 
-  const debouncedSearchTerm = useDebounce(search, 500);
+  const debouncedSearchTerm = useDebounce(search, 700);
   useEffect(() => {
     const action = getAction[pathname];
     // console.log(debouncedSearchTerm, "debounce");

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useMemo, useRef } from "react";
 import styles from "./Table.module.css";
 import { icons } from "../../assets";
 import classnames from "classnames";
@@ -32,6 +32,11 @@ const Table = ({ headerList, bodyList }) => {
     };
   }, [isShowPopUp]);
 
+  const memoBodyList = useMemo(() => {
+    return bodyList;
+  }, [bodyList]);
+
+  console.log(memoBodyList, "memoBodyLists");
   return (
     <>
       <table>
@@ -57,7 +62,7 @@ const Table = ({ headerList, bodyList }) => {
           </tr>
         </thead>
         <tbody>
-          {bodyList?.map((row, index) => {
+          {memoBodyList?.map((row, index) => {
             return <BodyRow row={row} key={index} />;
           })}
         </tbody>

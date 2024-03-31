@@ -63,7 +63,6 @@ export const getOutStock = createAsyncThunk(
 );
 export const getBranch = createAsyncThunk("data/getBranch", async (page) => {
   try {
-    console.log(page, "page");
     const response = await api.getBranch(page);
     return response;
   } catch (error) {
@@ -187,9 +186,10 @@ export const getFilialName = createAsyncThunk(
 // ! DELETE
 export const deleteMenuPostition = createAsyncThunk(
   "data/deleteMenuPostition",
-  async (id) => {
+  async ({ id, dispatch, page }) => {
     try {
-      const response = api.deleteMenuPostition(id);
+      const response = await api.deleteMenuPostition(id);
+      dispatch(getMenuList(page));
       return response;
     } catch (error) {
       console.log(error);
@@ -199,9 +199,10 @@ export const deleteMenuPostition = createAsyncThunk(
 );
 export const deleteFilial = createAsyncThunk(
   "data/deleteFilial",
-  async (id) => {
+  async ({ id, dispatch, page }) => {
     try {
-      const response = api.deleteFilial(id);
+      const response = await api.deleteFilial(id);
+      dispatch(getBranch(page));
       return response;
     } catch (error) {
       console.log(error);
@@ -211,9 +212,10 @@ export const deleteFilial = createAsyncThunk(
 );
 export const deleteEmployer = createAsyncThunk(
   "data/deleteEmployer",
-  async (data) => {
+  async ({ data, dispatch, page }) => {
     try {
-      const response = api.deleteEmployer(data);
+      const response = await api.deleteEmployer(data);
+      dispatch(getAllEmployers(page));
       return response;
     } catch (error) {
       console.log(error);
@@ -222,10 +224,11 @@ export const deleteEmployer = createAsyncThunk(
   }
 );
 export const deleteStockProduct = createAsyncThunk(
-  "data/deleteMenuPostition",
-  async (data) => {
+  "data/deleteStockProduct",
+  async ({ id, dispatch, pageNumber, filterValue }) => {
     try {
-      const response = api.deleteStockProduct(data);
+      const response = await api.deleteStockProduct(id);
+      dispatch(getStockList({ data: filterValue, pageNumber: pageNumber }));
       return response;
     } catch (error) {
       console.log(error);

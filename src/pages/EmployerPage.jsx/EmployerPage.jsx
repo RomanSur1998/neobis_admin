@@ -8,7 +8,7 @@ import { changeTableData } from "../../helpers/table/changeTableData";
 
 const EmployerPage = () => {
   const { tableDataList, pageNumber } = useSelector((state) => state.data);
-  console.log(tableDataList, "employer");
+  console.log(pageNumber, "employer");
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllEmployers(pageNumber));
