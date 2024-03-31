@@ -28,7 +28,6 @@ export const userSlice = createSlice({
     });
     builder.addCase(authUser.rejected, (state, actions) => {
       state.error = true;
-      console.error("Ошибка авторизации:"); // Логируем данные ошибки
     });
   },
 });

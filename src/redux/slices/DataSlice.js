@@ -5,6 +5,7 @@ import {
   deleteEmployer,
   deleteFilial,
   deleteMenuPostition,
+  deleteStockProduct,
   editEmployer,
   editFilial,
   editMenuPosition,
@@ -191,6 +192,9 @@ export const dataSlice = createSlice({
       state.currentModal = null;
     });
     builder.addCase(editFilial.fulfilled, (state, action) => {
+      state.currentModal = null;
+    });
+    builder.addCase(deleteStockProduct.fulfilled, (state, action) => {
       state.currentModal = null;
     });
   },

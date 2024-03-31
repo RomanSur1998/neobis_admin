@@ -30,7 +30,11 @@ const ScheduleModal = ({ workDays }) => {
                 <div
                   className={classnames(styles.block, styles.time, styles.flex)}
                 >
-                  <p className={classnames(styles.text)}>
+                  <p
+                    className={classnames(styles.text, {
+                      [styles.color]: item.checked !== true,
+                    })}
+                  >
                     {item?.checked ? `${item.from}-${item.from}` : "Выходной"}
                   </p>
                 </div>

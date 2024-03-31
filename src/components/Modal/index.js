@@ -10,19 +10,19 @@ import NewEmployer from "./NewEmployer/NewEmployer";
 import ScheduleModal from "./ScheduleModal/ScheduleModal";
 import OutModal from "./OutModal/OutModal";
 
+const ModalsMap = {
+  newCategory: NewCategoryModal,
+  deleteCategory: DeleteModal,
+  newPosition: NewPositionModal,
+  newProduct: NewProductStockModal,
+  addNewBranch: BranchModal,
+  newEmployer: NewEmployer,
+  scheduleModal: ScheduleModal,
+  outModal: OutModal,
+};
+
 const Modals = () => {
   const { currentModal, modalProps } = useSelector((state) => state.data);
-
-  const ModalsMap = {
-    newCategory: NewCategoryModal,
-    deleteCategory: DeleteModal,
-    newPosition: NewPositionModal,
-    newProduct: NewProductStockModal,
-    addNewBranch: BranchModal,
-    newEmployer: NewEmployer,
-    scheduleModal: ScheduleModal,
-    outModal: OutModal,
-  };
 
   return currentModal ? ModalsMap[currentModal](modalProps) : null;
 };
