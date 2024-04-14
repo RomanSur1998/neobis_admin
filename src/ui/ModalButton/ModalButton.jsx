@@ -2,13 +2,14 @@ import React from "react";
 import styles from "./ModalButton.module.css";
 import classnames from "classnames";
 
+const btnTypes = {
+  outlined: styles.outlined,
+  filled: styles.filled,
+  darker: styles.darker,
+  color: styles.color,
+};
+
 const ModalButton = ({ buttonType, children, click, type, name }) => {
-  const btnTypes = {
-    outlined: styles.outlined,
-    filled: styles.filled,
-    darker: styles.darker,
-    color: styles.color,
-  };
   return (
     <button
       name={name ? name : null}

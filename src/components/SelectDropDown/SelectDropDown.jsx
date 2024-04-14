@@ -6,6 +6,11 @@ import { useDispatch } from "react-redux";
 
 import { getCategoryList } from "../../redux/actions/DataActions";
 
+const inputTypes = {
+  full: styles.full_width,
+  small: styles.small_width,
+};
+
 const SelectDropDown = ({
   name,
   inputType,
@@ -49,11 +54,6 @@ const SelectDropDown = ({
   //     document.removeEventListener("click", closeOut);
   //   };
   // }, [isOpenSelect]);
-
-  const inputTypes = {
-    full: styles.full_width,
-    small: styles.small_width,
-  };
 
   return (
     <div

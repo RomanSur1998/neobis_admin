@@ -9,6 +9,7 @@ import BranchModal from "./BranchModal/BranchModal";
 import NewEmployer from "./NewEmployer/NewEmployer";
 import ScheduleModal from "./ScheduleModal/ScheduleModal";
 import OutModal from "./OutModal/OutModal";
+import ReactDOM from "react-dom";
 
 const ModalsMap = {
   newCategory: NewCategoryModal,
@@ -21,10 +22,15 @@ const ModalsMap = {
   outModal: OutModal,
 };
 
+const modal = document.getElementById("portal");
+
 const Modals = () => {
   const { currentModal, modalProps } = useSelector((state) => state.data);
 
-  return currentModal ? ModalsMap[currentModal](modalProps) : null;
+  return ReactDOM.createPortal(
+    currentModal ? ModalsMap[currentModal](modalProps) : null,
+    modal
+  );
 };
 
 export default Modals;

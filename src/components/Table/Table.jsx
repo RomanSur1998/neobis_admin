@@ -1,4 +1,5 @@
-import React, { useEffect, useMemo, useRef } from "react";
+/* eslint-disable react/prop-types */
+import { useEffect, useMemo, useRef } from "react";
 import styles from "./Table.module.css";
 import { icons } from "../../assets";
 import classnames from "classnames";
@@ -8,6 +9,7 @@ import { setIsShowPopUp } from "../../redux/slices/DataSlice";
 import BodyRow from "../../ui/BodyRow/BodyRow";
 import MyPagination from "../Pagination/MyPagination";
 
+// eslint-disable-next-line react/prop-types
 const Table = ({ headerList, bodyList }) => {
   const { isShowPopUp } = useSelector((state) => state.data);
   const dispatch = useDispatch();
@@ -42,7 +44,7 @@ const Table = ({ headerList, bodyList }) => {
       <table>
         <thead>
           <tr className={styles.headerBlock}>
-            {headerList.map((item) => (
+            {headerList?.map((item) => (
               <th key={item.id} className={item.image ? styles.block : null}>
                 {item.header}
                 {item.image ? (

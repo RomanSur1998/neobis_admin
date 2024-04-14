@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Table from "../../components/Table/Table";
 import MainLayout from "../../layouts/MainLayout/MainLayout";
 import { branchHeader } from "../../helpers/table/tableHeaders";
@@ -9,11 +9,16 @@ import { changeTableData } from "../../helpers/table/changeTableData";
 const BranchPage = () => {
   const dispatch = useDispatch();
   const { tableDataList, pageNumber } = useSelector((state) => state.data);
-  console.log(tableDataList, "table data");
+  const firstRender = useRef(true);
 
   useEffect(() => {
-    dispatch(getBranch(pageNumber));
-  }, []);
+    if (firstRender.current) {
+      dispatch(getBranch(1));
+      firstRender.current = false;
+    } else {
+      dispatch(getBranch(pageNumber));
+    }
+  }, [pageNumber]);
 
   return (
     <>

@@ -3,9 +3,9 @@ import { configAxios } from "../config/configAxios";
 
 export const api = {
   authorization: async (data, navigate) => {
+    // eslint-disable-next-line no-useless-catch
     try {
       const response = await configAxios.post("/api/v1/auth/admin-login", data);
-
       if (response.status === 200) {
         Cookies.set("accessToken", response.data.accessToken);
         Cookies.set("refreshToken", response.data.refreshToken, { expires: 1 });

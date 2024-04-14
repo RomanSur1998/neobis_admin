@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Table from "../../components/Table/Table";
 import MainLayout from "../../layouts/MainLayout/MainLayout";
 import { menuHeader } from "../../helpers/table/tableHeaders";
@@ -8,12 +8,18 @@ import { changeTableData } from "../../helpers/table/changeTableData";
 
 const MenuPage = () => {
   const { tableDataList, pageNumber } = useSelector((state) => state.data);
+  const firstRender = useRef(true);
 
   const dispatch = useDispatch();
   console.log(tableDataList, "table data list ");
 
   useEffect(() => {
-    dispatch(getMenuList(pageNumber));
+    if (firstRender.current) {
+      dispatch(getMenuList(1));
+      firstRender.current = false;
+    } else {
+      dispatch(getMenuList(pageNumber));
+    }
   }, [pageNumber]);
 
   return (

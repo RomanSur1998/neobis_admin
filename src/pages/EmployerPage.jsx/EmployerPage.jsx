@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import Table from "../../components/Table/Table";
 import MainLayout from "../../layouts/MainLayout/MainLayout";
 import { employerHeader } from "../../helpers/table/tableHeaders";
@@ -8,12 +8,16 @@ import { changeTableData } from "../../helpers/table/changeTableData";
 
 const EmployerPage = () => {
   const { tableDataList, pageNumber } = useSelector((state) => state.data);
-  console.log(pageNumber, "employer");
+  const firstRender = useRef(true);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getAllEmployers(pageNumber));
+    if (firstRender.current) {
+      dispatch(getAllEmployers(1));
+      firstRender.current = false;
+    } else {
+      dispatch(getAllEmployers(pageNumber));
+    }
   }, [pageNumber]);
-
   return (
     <>
       <MainLayout>
